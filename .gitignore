@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+test-results/
+playwright-report/
+.cache/
+
+# Local archives, vendor examples and the legacy knowledge-path bridge.
+/.local/
+/deepseek-harness-master/
+
+# Python environments and generated caches.
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Personal editor state.
+.idea/
+.vscode/

@@ -1,0 +1,63 @@
+{
+  "name": "nihao-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "China travel chat built on the DeepSeek Harness agent runtime",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.9.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:local": "zsh scripts/local.zsh dev",
+    "start:local": "zsh scripts/local.zsh start",
+    "env:check": "zsh scripts/local.zsh check",
+    "build": "node scripts/build.mjs",
+    "build:artifacts": "node scripts/build.mjs",
+    "build:check": "npm run typecheck",
+    "typecheck": "tsc -p tsconfig.vendor.json && tsc --noEmit",
+    "start": "node --use-env-proxy dist/server.mjs",
+    "test": "tsx --tsconfig tsconfig.runtime.json --test apps/nihao/server/*.test.ts apps/nihao/web/src/*.test.ts",
+    "test:ui": "node scripts/test-ui.mjs && node scripts/test-images-ui.mjs && node scripts/test-speech-ui.mjs && node scripts/test-dictation-ui.mjs"
+  },
+  "dependencies": {
+    "@babel/code-frame": "^7.29.0",
+    "@earendil-works/pi-ai": "1.3.0",
+    "@eslint-community/regexpp": "^4.12.2",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@standard-schema/spec": "^1.1.0",
+    "ajv": "^8.20.0",
+    "chokidar": "5.0.0",
+    "commander": "^15.0.0",
+    "https-proxy-agent": "^9.1.0",
+    "js-yaml": "^4.3.2",
+    "lucide-react": "^0.468.0",
+    "node-addon-require-builtin": "^0.1.9",
+    "picomatch": "^4.0.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "resolve.exports": "^2.0.3",
+    "semver": "^7.8.5",
+    "sharp": "^0.35.5",
+    "ws": "^8.22.2",
+    "yaml": "^2.8.1",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/babel__code-frame": "^7.0.6",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.10.0",
+    "@types/picomatch": "^4.0.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/semver": "^7.7.1",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "esbuild": "^0.25.12",
+    "playwright": "^1.56.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}

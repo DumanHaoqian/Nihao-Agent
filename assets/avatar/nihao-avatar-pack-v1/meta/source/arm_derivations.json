@@ -1,0 +1,32 @@
+{
+  "type": "technical_puppet_geometry_export",
+  "notes": "No new artwork. Reuses accepted generated joint artwork with mechanical mirror/scale. Root exports final alignment and pivots.",
+  "mappings": [
+    {
+      "file": "arm_upper_right.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "horizontal_mirror",
+      "purpose": "Symmetric shoulder-to-elbow puppet connector"
+    },
+    {
+      "file": "forearm_left.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "nearest_neighbor_horizontal_scale",
+      "scale": [
+        0.86,
+        1
+      ],
+      "purpose": "Matching elbow-to-wrist puppet connector"
+    },
+    {
+      "file": "forearm_right.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "horizontal_mirror_then_nearest_neighbor_horizontal_scale",
+      "scale": [
+        0.86,
+        1
+      ],
+      "purpose": "Symmetric elbow-to-wrist puppet connector"
+    }
+  ]
+}

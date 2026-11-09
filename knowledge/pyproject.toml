@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "nihao-knowledge"
+version = "0.2.0"
+description = "Independent, provenance-aware China travel knowledge ingestion pilot"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.32,<3", "PyYAML>=6,<7", "jsonschema>=4.23,<5", "Pillow>=11,<13", "protego>=0.4,<1", "mwparserfromhell>=0.7,<1", "beautifulsoup4>=4.12,<5"]
+[project.optional-dependencies]
+rag = ["sentence-transformers>=6.2,<7", "rank-bm25>=0.2,<0.3", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "python-multipart>=0.0.20"]
+osm = ["osmium>=4,<5"]
+test = ["pytest>=8,<10"]
+[project.scripts]
+nihao-knowledge = "nihao_ingest.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+nihao_ingest = ["schemas/*.json", "retrieval/*.json"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

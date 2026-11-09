@@ -1,0 +1,479 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "paths": {
+      "@deepseek-ai/cordis": [
+        "./.cache/vendor-types/cordis/src"
+      ],
+      "@deepseek-ai/cosmokit": [
+        "./.cache/vendor-types/cosmokit/src"
+      ],
+      "@deepseek-ai/schemastery": [
+        "./.cache/vendor-types/schemastery/src"
+      ],
+      "@deepseek-ai/cordis-plugin-loader": [
+        "./.cache/vendor-types/loader/src"
+      ],
+      "@deepseek-ai/cordis-plugin-include": [
+        "./.cache/vendor-types/include/src"
+      ],
+      "@deepseek-ai/cordis-plugin-group": [
+        "./.cache/vendor-types/group/src"
+      ],
+      "@deepseek-ai/cordis-plugin-timer": [
+        "./.cache/vendor-types/timer/src"
+      ],
+      "@deepseek-ai/dsh-hmr": [
+        "./packages/boot/hmr/src"
+      ],
+      "@deepseek-ai/dsh-typert-protocol": [
+        "./packages/typert/protocol/src/index.ts"
+      ],
+      "@deepseek-ai/dsh-typert-protocol/types": [
+        "./packages/typert/protocol/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-typert-protocol/remote-info": [
+        "./packages/typert/protocol/src/remote-info.ts"
+      ],
+      "@deepseek-ai/dsh-attachment/types": [
+        "./packages/attachment/attachment/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-session/types": [
+        "./packages/core/session/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-session/chunk-rows": [
+        "./packages/core/session/src/chunk-rows.ts"
+      ],
+      "@deepseek-ai/dsh-session/surface": [
+        "./packages/core/session/src/surface.ts"
+      ],
+      "@deepseek-ai/dsh-session/fork": [
+        "./packages/core/session/src/fork.ts"
+      ],
+      "@deepseek-ai/dsh-session-projection/types": [
+        "./packages/session/session-projection/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-workspace/types": [
+        "./packages/workspace/workspace/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-llm/types": [
+        "./packages/llm/llm/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-llm/brand": [
+        "./packages/llm/llm/src/brand.ts"
+      ],
+      "@deepseek-ai/dsh-llm/assistant-stream": [
+        "./packages/llm/llm/src/assistant-stream.ts"
+      ],
+      "@deepseek-ai/dsh-llm/message": [
+        "./packages/llm/llm/src/message.ts"
+      ],
+      "@deepseek-ai/dsh-credentials/types": [
+        "./packages/credentials/credentials/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-authorization/types": [
+        "./packages/credentials/authorization/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-settings/types": [
+        "./packages/settings/settings/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-tools/pipeline": [
+        "./packages/core/tools/src/pipeline.ts"
+      ],
+      "@deepseek-ai/dsh-tools/presentation": [
+        "./packages/core/tools/src/presentation.ts"
+      ],
+      "@deepseek-ai/dsh-user-approval/types": [
+        "./packages/interaction/user-approval/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-agent/types": [
+        "./packages/core/agent/src/types.ts"
+      ],
+      "@deepseek-ai/dsh-agent/brand": [
+        "./packages/core/agent/src/brand.ts"
+      ],
+      "@deepseek-ai/dsh-util-crypto": [
+        "./packages/util/crypto/src"
+      ],
+      "@deepseek-ai/dsh-util-values": [
+        "./packages/util/values/src"
+      ],
+      "@deepseek-ai/dsh-agent": [
+        "./packages/core/agent/src"
+      ],
+      "@deepseek-ai/dsh-agent-loop": [
+        "./packages/core/agent-loop/src"
+      ],
+      "@deepseek-ai/dsh-app-boot": [
+        "./packages/boot/app-boot/src"
+      ],
+      "@deepseek-ai/dsh-atomic-write": [
+        "./packages/util/atomic-write/src"
+      ],
+      "@deepseek-ai/dsh-attachment": [
+        "./packages/attachment/attachment/src"
+      ],
+      "@deepseek-ai/dsh-authorization": [
+        "./packages/credentials/authorization/src"
+      ],
+      "@deepseek-ai/dsh-brand": [
+        "./packages/util/brand/src"
+      ],
+      "@deepseek-ai/dsh-cmdline": [
+        "./packages/boot/cmdline/src"
+      ],
+      "@deepseek-ai/dsh-config-editor": [
+        "./packages/boot/config-editor/src"
+      ],
+      "@deepseek-ai/dsh-credentials": [
+        "./packages/credentials/credentials/src"
+      ],
+      "@deepseek-ai/dsh-fs": [
+        "./packages/fs/fs/src"
+      ],
+      "@deepseek-ai/dsh-fs-patch": [
+        "./packages/fs/fs-patch/src"
+      ],
+      "@deepseek-ai/dsh-home-paths": [
+        "./packages/util/home-paths/src"
+      ],
+      "@deepseek-ai/dsh-launch-environment": [
+        "./packages/util/launch-environment/src"
+      ],
+      "@deepseek-ai/dsh-llm": [
+        "./packages/llm/llm/src"
+      ],
+      "@deepseek-ai/dsh-llm-pi-ai": [
+        "./packages/llm/llm-pi-ai/src"
+      ],
+      "@deepseek-ai/dsh-official-bundles": [
+        "./packages/util/official-bundles/src"
+      ],
+      "@deepseek-ai/dsh-package-manifest": [
+        "./packages/util/package-manifest/src"
+      ],
+      "@deepseek-ai/dsh-sandbox": [
+        "./packages/sandbox/sandbox/src"
+      ],
+      "@deepseek-ai/dsh-scope": [
+        "./packages/core/scope/src"
+      ],
+      "@deepseek-ai/dsh-session": [
+        "./packages/core/session/src"
+      ],
+      "@deepseek-ai/dsh-session-persistence": [
+        "./packages/session/session-persistence/src"
+      ],
+      "@deepseek-ai/dsh-session-projection": [
+        "./packages/session/session-projection/src"
+      ],
+      "@deepseek-ai/dsh-settings": [
+        "./packages/settings/settings/src"
+      ],
+      "@deepseek-ai/dsh-storage": [
+        "./packages/storage/storage/src"
+      ],
+      "@deepseek-ai/dsh-storage-domain": [
+        "./packages/storage/storage-domain/src"
+      ],
+      "@deepseek-ai/dsh-system-prompt": [
+        "./packages/core/system-prompt/src"
+      ],
+      "@deepseek-ai/dsh-timeout": [
+        "./packages/util/timeout/src"
+      ],
+      "@deepseek-ai/dsh-tool-executor-native": [
+        "./packages/core/tool-executor-native/src"
+      ],
+      "@deepseek-ai/dsh-tools": [
+        "./packages/core/tools/src"
+      ],
+      "@deepseek-ai/dsh-user-approval": [
+        "./packages/interaction/user-approval/src"
+      ],
+      "@deepseek-ai/dsh-workspace": [
+        "./packages/workspace/workspace/src"
+      ],
+      "@deepseek-ai/cordis/src/*": [
+        "./.cache/vendor-types/cordis/src/*"
+      ],
+      "@deepseek-ai/cordis/package.json": [
+        "./.cache/vendor-types/cordis/package.json"
+      ],
+      "@deepseek-ai/cordis-plugin-group/src/*": [
+        "./.cache/vendor-types/group/src/*"
+      ],
+      "@deepseek-ai/cordis-plugin-group/package.json": [
+        "./.cache/vendor-types/group/package.json"
+      ],
+      "@deepseek-ai/cordis-plugin-include/src/*": [
+        "./.cache/vendor-types/include/src/*"
+      ],
+      "@deepseek-ai/cordis-plugin-include/package.json": [
+        "./.cache/vendor-types/include/package.json"
+      ],
+      "@deepseek-ai/cordis-plugin-loader/src/*": [
+        "./.cache/vendor-types/loader/src/*"
+      ],
+      "@deepseek-ai/cordis-plugin-loader/package.json": [
+        "./.cache/vendor-types/loader/package.json"
+      ],
+      "@deepseek-ai/cordis-plugin-timer/src/*": [
+        "./.cache/vendor-types/timer/src/*"
+      ],
+      "@deepseek-ai/cordis-plugin-timer/package.json": [
+        "./.cache/vendor-types/timer/package.json"
+      ],
+      "@deepseek-ai/cosmokit/src/*": [
+        "./.cache/vendor-types/cosmokit/src/*"
+      ],
+      "@deepseek-ai/cosmokit/package.json": [
+        "./.cache/vendor-types/cosmokit/package.json"
+      ],
+      "@deepseek-ai/dsh-agent/src/*": [
+        "./packages/core/agent/src/*"
+      ],
+      "@deepseek-ai/dsh-agent/package.json": [
+        "./packages/core/agent/package.json"
+      ],
+      "@deepseek-ai/dsh-agent-loop/src/*": [
+        "./packages/core/agent-loop/src/*"
+      ],
+      "@deepseek-ai/dsh-agent-loop/package.json": [
+        "./packages/core/agent-loop/package.json"
+      ],
+      "@deepseek-ai/dsh-app-boot/src/*": [
+        "./packages/boot/app-boot/src/*"
+      ],
+      "@deepseek-ai/dsh-app-boot/package.json": [
+        "./packages/boot/app-boot/package.json"
+      ],
+      "@deepseek-ai/dsh-atomic-write/src/*": [
+        "./packages/util/atomic-write/src/*"
+      ],
+      "@deepseek-ai/dsh-atomic-write/package.json": [
+        "./packages/util/atomic-write/package.json"
+      ],
+      "@deepseek-ai/dsh-attachment/src/*": [
+        "./packages/attachment/attachment/src/*"
+      ],
+      "@deepseek-ai/dsh-attachment/package.json": [
+        "./packages/attachment/attachment/package.json"
+      ],
+      "@deepseek-ai/dsh-authorization/src/*": [
+        "./packages/credentials/authorization/src/*"
+      ],
+      "@deepseek-ai/dsh-authorization/package.json": [
+        "./packages/credentials/authorization/package.json"
+      ],
+      "@deepseek-ai/dsh-brand/src/*": [
+        "./packages/util/brand/src/*"
+      ],
+      "@deepseek-ai/dsh-brand/package.json": [
+        "./packages/util/brand/package.json"
+      ],
+      "@deepseek-ai/dsh-cmdline/src/*": [
+        "./packages/boot/cmdline/src/*"
+      ],
+      "@deepseek-ai/dsh-cmdline/package.json": [
+        "./packages/boot/cmdline/package.json"
+      ],
+      "@deepseek-ai/dsh-config-editor/src/*": [
+        "./packages/boot/config-editor/src/*"
+      ],
+      "@deepseek-ai/dsh-config-editor/package.json": [
+        "./packages/boot/config-editor/package.json"
+      ],
+      "@deepseek-ai/dsh-credentials/src/*": [
+        "./packages/credentials/credentials/src/*"
+      ],
+      "@deepseek-ai/dsh-credentials/package.json": [
+        "./packages/credentials/credentials/package.json"
+      ],
+      "@deepseek-ai/dsh-fs/src/*": [
+        "./packages/fs/fs/src/*"
+      ],
+      "@deepseek-ai/dsh-fs/package.json": [
+        "./packages/fs/fs/package.json"
+      ],
+      "@deepseek-ai/dsh-fs-patch/src/*": [
+        "./packages/fs/fs-patch/src/*"
+      ],
+      "@deepseek-ai/dsh-fs-patch/package.json": [
+        "./packages/fs/fs-patch/package.json"
+      ],
+      "@deepseek-ai/dsh-hmr/src/*": [
+        "./packages/boot/hmr/src/*"
+      ],
+      "@deepseek-ai/dsh-hmr/package.json": [
+        "./packages/boot/hmr/package.json"
+      ],
+      "@deepseek-ai/dsh-home-paths/src/*": [
+        "./packages/util/home-paths/src/*"
+      ],
+      "@deepseek-ai/dsh-home-paths/package.json": [
+        "./packages/util/home-paths/package.json"
+      ],
+      "@deepseek-ai/dsh-launch-environment/src/*": [
+        "./packages/util/launch-environment/src/*"
+      ],
+      "@deepseek-ai/dsh-launch-environment/package.json": [
+        "./packages/util/launch-environment/package.json"
+      ],
+      "@deepseek-ai/dsh-llm/src/*": [
+        "./packages/llm/llm/src/*"
+      ],
+      "@deepseek-ai/dsh-llm/package.json": [
+        "./packages/llm/llm/package.json"
+      ],
+      "@deepseek-ai/dsh-llm-pi-ai/src/*": [
+        "./packages/llm/llm-pi-ai/src/*"
+      ],
+      "@deepseek-ai/dsh-llm-pi-ai/package.json": [
+        "./packages/llm/llm-pi-ai/package.json"
+      ],
+      "@deepseek-ai/dsh-official-bundles/src/*": [
+        "./packages/util/official-bundles/src/*"
+      ],
+      "@deepseek-ai/dsh-official-bundles/package.json": [
+        "./packages/util/official-bundles/package.json"
+      ],
+      "@deepseek-ai/dsh-package-manifest/src/*": [
+        "./packages/util/package-manifest/src/*"
+      ],
+      "@deepseek-ai/dsh-package-manifest/package.json": [
+        "./packages/util/package-manifest/package.json"
+      ],
+      "@deepseek-ai/dsh-sandbox/src/*": [
+        "./packages/sandbox/sandbox/src/*"
+      ],
+      "@deepseek-ai/dsh-sandbox/package.json": [
+        "./packages/sandbox/sandbox/package.json"
+      ],
+      "@deepseek-ai/dsh-scope/src/*": [
+        "./packages/core/scope/src/*"
+      ],
+      "@deepseek-ai/dsh-scope/package.json": [
+        "./packages/core/scope/package.json"
+      ],
+      "@deepseek-ai/dsh-session/src/*": [
+        "./packages/core/session/src/*"
+      ],
+      "@deepseek-ai/dsh-session/package.json": [
+        "./packages/core/session/package.json"
+      ],
+      "@deepseek-ai/dsh-session-persistence/src/*": [
+        "./packages/session/session-persistence/src/*"
+      ],
+      "@deepseek-ai/dsh-session-persistence/package.json": [
+        "./packages/session/session-persistence/package.json"
+      ],
+      "@deepseek-ai/dsh-session-projection/src/*": [
+        "./packages/session/session-projection/src/*"
+      ],
+      "@deepseek-ai/dsh-session-projection/package.json": [
+        "./packages/session/session-projection/package.json"
+      ],
+      "@deepseek-ai/dsh-settings/src/*": [
+        "./packages/settings/settings/src/*"
+      ],
+      "@deepseek-ai/dsh-settings/package.json": [
+        "./packages/settings/settings/package.json"
+      ],
+      "@deepseek-ai/dsh-storage/src/*": [
+        "./packages/storage/storage/src/*"
+      ],
+      "@deepseek-ai/dsh-storage/package.json": [
+        "./packages/storage/storage/package.json"
+      ],
+      "@deepseek-ai/dsh-storage-domain/src/*": [
+        "./packages/storage/storage-domain/src/*"
+      ],
+      "@deepseek-ai/dsh-storage-domain/package.json": [
+        "./packages/storage/storage-domain/package.json"
+      ],
+      "@deepseek-ai/dsh-system-prompt/src/*": [
+        "./packages/core/system-prompt/src/*"
+      ],
+      "@deepseek-ai/dsh-system-prompt/package.json": [
+        "./packages/core/system-prompt/package.json"
+      ],
+      "@deepseek-ai/dsh-timeout/src/*": [
+        "./packages/util/timeout/src/*"
+      ],
+      "@deepseek-ai/dsh-timeout/package.json": [
+        "./packages/util/timeout/package.json"
+      ],
+      "@deepseek-ai/dsh-tool-executor-native/src/*": [
+        "./packages/core/tool-executor-native/src/*"
+      ],
+      "@deepseek-ai/dsh-tool-executor-native/package.json": [
+        "./packages/core/tool-executor-native/package.json"
+      ],
+      "@deepseek-ai/dsh-tools/src/*": [
+        "./packages/core/tools/src/*"
+      ],
+      "@deepseek-ai/dsh-tools/package.json": [
+        "./packages/core/tools/package.json"
+      ],
+      "@deepseek-ai/dsh-typert-protocol/src/*": [
+        "./packages/typert/protocol/src/*"
+      ],
+      "@deepseek-ai/dsh-typert-protocol/package.json": [
+        "./packages/typert/protocol/package.json"
+      ],
+      "@deepseek-ai/dsh-user-approval/src/*": [
+        "./packages/interaction/user-approval/src/*"
+      ],
+      "@deepseek-ai/dsh-user-approval/package.json": [
+        "./packages/interaction/user-approval/package.json"
+      ],
+      "@deepseek-ai/dsh-util-crypto/src/*": [
+        "./packages/util/crypto/src/*"
+      ],
+      "@deepseek-ai/dsh-util-crypto/package.json": [
+        "./packages/util/crypto/package.json"
+      ],
+      "@deepseek-ai/dsh-util-values/src/*": [
+        "./packages/util/values/src/*"
+      ],
+      "@deepseek-ai/dsh-util-values/package.json": [
+        "./packages/util/values/package.json"
+      ],
+      "@deepseek-ai/dsh-workspace/src/*": [
+        "./packages/workspace/workspace/src/*"
+      ],
+      "@deepseek-ai/dsh-workspace/package.json": [
+        "./packages/workspace/workspace/package.json"
+      ],
+      "@deepseek-ai/schemastery/src/*": [
+        "./.cache/vendor-types/schemastery/src/*"
+      ],
+      "@deepseek-ai/schemastery/package.json": [
+        "./.cache/vendor-types/schemastery/package.json"
+      ]
+    }
+  },
+  "include": [
+    "apps/nihao/**/*.ts",
+    "apps/nihao/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

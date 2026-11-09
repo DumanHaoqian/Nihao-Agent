@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nihao:schema:documents.schema.json",
+  "title": "Nihao documents",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domain": {
+      "enum": [
+        "entry_visa",
+        "daily_life",
+        "attractions",
+        "food_culture",
+        "transportation"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "national",
+        "province",
+        "city",
+        "poi"
+      ]
+    },
+    "province": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_published_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "license": {
+      "type": "string"
+    },
+    "rights_status": {
+      "enum": [
+        "approved",
+        "metadata_only",
+        "needs_review",
+        "withdrawn"
+      ]
+    },
+    "content_status": {
+      "type": "string"
+    },
+    "data_version": {
+      "type": "string"
+    },
+    "document_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "revision_or_retrieved_at": {
+      "type": [
+        "string",
+        "integer"
+      ]
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "is_time_sensitive": {
+      "type": "boolean"
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid_until": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_record_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "normalization_version": {
+      "type": "string"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "id",
+    "entity_id",
+    "domain",
+    "scope",
+    "province",
+    "city",
+    "language",
+    "source_id",
+    "source_url",
+    "fetched_at",
+    "source_published_at",
+    "last_verified_at",
+    "license",
+    "rights_status",
+    "content_status",
+    "data_version",
+    "document_id",
+    "title",
+    "text",
+    "section",
+    "revision_or_retrieved_at",
+    "char_start",
+    "char_end",
+    "is_time_sensitive",
+    "valid_from",
+    "valid_until",
+    "sha256"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,58 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "file": "arm_upper_left.png",
+      "prompt": "Use case: illustration-story. Technical game-art production asset. Using the supplied cartoon character as a style and color reference, produce a single small ARM UPPER SEGMENT for a modular 2D paper-puppet game sprite. This is the character's LEFT arm, which appears on the viewer's RIGHT. The only visible shape is a short vertical rounded capsule in the same peach skin colors as the character's face, with a dark brown square-pixel outline. This rounded rectangle represents the shoulder-to-elbow connector that will be overlapped with a separate short sleeve and forearm. Keep its width about one-half of its length. Top and bottom are softly rounded stepped pixel caps, completely painted for joint overlap. Use clear flat pixel clusters and only three peach shades, no realistic anatomy. Center this one simple sprite piece on transparent alpha. No hand, no fingers, no other limb segments, no clothes, no person, no labels, no background, no shadows, no glow, no extra items. It is a clean technical animation part, not a character illustration.",
+      "status": "generated"
+    },
+    {
+      "file": "hand_left.png",
+      "prompt": "Use case: precise-object-edit. Technical 2D game-animation sprite. Based on the supplied Nihao full-body cartoon, create only the character's LEFT HAND as a separate transparent pixel-art layer. Left is character's own left, which appears on the viewer's right. The small hand hangs relaxed vertically downward, wrist at top, fingertips at bottom, with a clear small thumb on the viewer-left inner side. Keep the reference's cute simple rounded chibi hand proportions and exact peach skin shades, dark reddish-brown stepped outlines. Show a complete solid wrist connector above the palm so it can overlap the separate forearm. Wrist-to-fingertips only; NO forearm, no upper arm, no sleeve. Small flat 2D pixel silhouette, clean bold square-pixel edges, three shades maximum, not realistic anatomy. Center exactly one isolated hand on genuine alpha transparency. No scenery, no background color, no text, no labels, no duplicate hand, no other body parts, no glow or cast shadow.",
+      "status": "generated"
+    },
+    {
+      "file": "hand_right.png",
+      "prompt": "Use case: precise-object-edit. Technical 2D game-animation sprite. Based on the supplied Nihao full-body cartoon, create only the character's RIGHT HAND as a separate transparent pixel-art layer. Right is character's own right, which appears on the viewer's left. The small hand hangs relaxed vertically downward, wrist at top, fingertips at bottom, with a clear small thumb on the viewer-right inner side. Keep the reference's cute simple rounded chibi hand proportions and exact peach skin shades, dark reddish-brown stepped outlines. Show a complete solid wrist connector above the palm so it can overlap the separate forearm. Wrist-to-fingertips only; NO forearm, no upper arm, no sleeve. Small flat 2D pixel silhouette, clean bold square-pixel edges, three shades maximum, not realistic anatomy. Center exactly one isolated hand on genuine alpha transparency. No scenery, no background color, no text, no labels, no duplicate hand, no other body parts, no glow or cast shadow.",
+      "status": "generated"
+    },
+    {
+      "file": "arm_upper_right.png",
+      "prompt": "Use case: precise-object-edit. Technical game sprite layer. Reference 1 is the Nihao character, reference 2 is her existing left upper-arm sprite. Create the matching RIGHT UPPER ARM SEGMENT for the same modular puppet, shown on the viewer's LEFT. Match reference 2's vertical capsule silhouette, approximate proportions, peach colors, flat shading, square-pixel stepped edges and dark brown outline. One short upright capsule, rounded top shoulder and rounded bottom elbow, length about twice width, both ends fully colored for overlapping joints. This is ONLY the short shoulder-to-elbow connector. No hand, no fingers, no forearm, no sleeve, no clothes, no body or character, no text, no labels, no other pieces. Center this one simple sprite on a truly transparent alpha background. Crisp isolated silhouette, uniform pixel grid, solid opaque interiors, no glow and no cast shadow.",
+      "status": "output_moderation_rejected"
+    },
+    {
+      "file": "forearm_left.png",
+      "prompt": "Use case: illustration-story. Technical game-art production asset. Using the supplied cartoon character as a style and color reference, produce a single FOREARM SEGMENT for a modular 2D paper-puppet game sprite. This is the character's LEFT forearm, which appears on the viewer's RIGHT. The only visible shape is a short vertical tapered rectangle with softly rounded stepped corners in the same peach colors as the character's face and a dark brown square-pixel outline. This animation part represents the elbow-to-wrist connector that will overlap with a separate upper-arm joint and hand. Slightly broader at the top elbow, slightly narrower at the bottom wrist. Keep its width about one-half of its length. Both ends completely painted for joint overlap. Clear flat pixel clusters and only three peach shades, no realistic anatomy. Center this one simple sprite piece on transparent alpha. No hand, no fingers, no other limb segments, no clothes, no person, no labels, no background, no shadows, no glow, no extra items. It is a clean technical animation part, not a character illustration.",
+      "status": "output_moderation_rejected"
+    }
+  ],
+  "derivations": [
+    {
+      "file": "arm_upper_right.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "horizontal_mirror",
+      "purpose": "Symmetric shoulder-to-elbow puppet connector"
+    },
+    {
+      "file": "forearm_left.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "nearest_neighbor_horizontal_scale",
+      "scale": [
+        0.86,
+        1
+      ],
+      "purpose": "Matching elbow-to-wrist puppet connector"
+    },
+    {
+      "file": "forearm_right.png",
+      "derivedFrom": "arm_upper_left.png",
+      "method": "horizontal_mirror_then_nearest_neighbor_horizontal_scale",
+      "scale": [
+        0.86,
+        1
+      ],
+      "purpose": "Symmetric elbow-to-wrist puppet connector"
+    }
+  ]
+}

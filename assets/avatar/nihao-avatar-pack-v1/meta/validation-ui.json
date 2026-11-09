@@ -1,0 +1,157 @@
+{
+  "result": "pass",
+  "browser": "Google Chrome via bundled Playwright",
+  "browserPlugin": "not available",
+  "defaultPlaywrightBrowser": "not installed; reused existing Chrome channel, no dependencies installed",
+  "url": "http://127.0.0.1:8767/meta/preview.html",
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "title": "Nihao Agent · Avatar Studio",
+  "layerCount": 37,
+  "interactions": [
+    {
+      "mode": "animation",
+      "name": "blink",
+      "pixels": 465616
+    },
+    {
+      "mode": "animation",
+      "name": "idle_loop",
+      "pixels": 465616
+    },
+    {
+      "mode": "animation",
+      "name": "talking",
+      "pixels": 465616
+    },
+    {
+      "mode": "animation",
+      "name": "waving",
+      "pixels": 466624
+    },
+    {
+      "mode": "animation",
+      "name": "nodding",
+      "pixels": 465616
+    },
+    {
+      "mode": "expression",
+      "name": "neutral",
+      "pixels": 465616
+    },
+    {
+      "mode": "expression",
+      "name": "happy",
+      "pixels": 465616
+    },
+    {
+      "mode": "expression",
+      "name": "excited",
+      "pixels": 465616
+    },
+    {
+      "mode": "expression",
+      "name": "thinking",
+      "pixels": 465536
+    },
+    {
+      "mode": "expression",
+      "name": "concerned",
+      "pixels": 465616
+    },
+    {
+      "mode": "expression",
+      "name": "apologetic",
+      "pixels": 455568
+    },
+    {
+      "mode": "pose",
+      "name": "idle_pose",
+      "pixels": 465616
+    },
+    {
+      "mode": "pose",
+      "name": "waving_pose",
+      "pixels": 466624
+    },
+    {
+      "mode": "pose",
+      "name": "pointing_left",
+      "pixels": 466608
+    },
+    {
+      "mode": "pose",
+      "name": "pointing_right",
+      "pixels": 466768
+    },
+    {
+      "mode": "pose",
+      "name": "explaining_pose",
+      "pixels": 470528
+    },
+    {
+      "mode": "pose",
+      "name": "hands_together_welcome",
+      "pixels": 446608
+    },
+    {
+      "mode": "pose",
+      "name": "celebration_pose",
+      "pixels": 469408
+    }
+  ],
+  "animationAdvanced": [
+    "1 / 16",
+    "3 / 16"
+  ],
+  "pause": true,
+  "scrub": true,
+  "layerMode": true,
+  "layerVisibility": true,
+  "headRotation": true,
+  "backgroundToggle": true,
+  "mobileHorizontalOverflow": false,
+  "canvasInsideStage": true,
+  "errors": [],
+  "failed": [],
+  "screenshots": [
+    "meta/preview-desktop.jpg",
+    "meta/preview-layers.jpg",
+    "meta/preview-mobile.jpg"
+  ],
+  "limitations": [
+    "Tested Chrome desktop and emulated mobile layout, not native iOS/Android",
+    "Canvas pivot check only; no Cubism model/runtime included"
+  ],
+  "revisionChecks": {
+    "layerCount": 37,
+    "checkedExpressions": [
+      {
+        "expression": "concerned",
+        "status": "pass"
+      },
+      {
+        "expression": "apologetic",
+        "status": "pass"
+      }
+    ],
+    "layeredConcerned": "pass",
+    "mouthDownturned": "layered/mouth_downturned.png",
+    "torsoParent": "root",
+    "newErrors": [],
+    "failedResources": [],
+    "screenshotsUpdated": [
+      "meta/preview-desktop.jpg",
+      "meta/preview-layers.jpg"
+    ],
+    "scope": "Incremental check only; previous 18 interaction checks retained"
+  }
+}

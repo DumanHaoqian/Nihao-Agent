@@ -1,0 +1,54 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "meta/source/reference_avatar.png",
+  "assets": [
+    {
+      "name": "eyes_open",
+      "file": "eyes_open.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Live2D / cutout puppet component: eyes_open. Using the supplied pixel-art character as the exact identity/style reference, extract/recreate ONLY HER TWO OPEN EYES as a separate transparent PNG layer. No face, no skin, no cheeks, no hair, no brows, no nose, no mouth. The two eyes have the same wide-set spacing and alignment as reference: dark brown-black large vertical pupils, white eye margins, tiny white square highlights, short upper eyelashes, friendly neutral gaze forward. The total eye pair occupies the central 70 percent canvas width. Both eye centers lie on same horizontal baseline. A single pair, front facing and symmetrical enough for facial rig. Genuine alpha transparency around and between the eyes; opaque white in eyeballs and highlights. Crisp consistent square-pixel steps and dark outlines, limited flat palette. Preserve the original shapes, no gradients, no 3D, no text, no checkerboard drawing. Isolated eyes only."
+    },
+    {
+      "name": "eyes_half_closed",
+      "file": "eyes_half_closed.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Reference image 1 is the Nihao girl character and reference image 2 is her extracted open-eye layer. Create the matching HALF-CLOSED EYE PAIR animation layer. Only change the two eyes to a natural halfway blink: the upper lids descend to about 50 percent opening, dark brown-black pupils and white eye margins stay visible in the lower opening. Both eyes blink together, aligned on one horizontal baseline. Preserve exact left-right spacing, overall eye width, dark color, lashes, blocky pixel scale and reference eye style. NO eyebrows, NO skin, NO face, NO other body parts, NO background. Two eyes only on genuine alpha transparency. Keep all eye strokes, pupil interiors and whites fully opaque; flat sharp dark ink pixels, no soft glows, no fading edges, no gradients, no shadows. Wide horizontal layout on a square/landscape transparent canvas with generous empty margins. Crisp deliberate square pixel-art clusters, same front view."
+    },
+    {
+      "name": "eyes_closed",
+      "file": "eyes_closed.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Generate the CLOSED-EYES facial layer for the supplied Nihao pixel-art girl. Reference image 1 is the character identity, image 2 is the open-eye spacing/style reference. Isolate exactly TWO FULLY CLOSED EYES, one matched pair, at the same left-right spacing as the open eyes. Relaxed natural blinking eyes, each a shallow downward-curving dark brown-black eyelid line with tiny outer lashes; NO eye whites or pupils when fully closed. Both eyes on same horizontal baseline. Match the reference's crisp square pixel contours, stroke thickness and friendly style. Only the eyelid strokes and lashes are opaque. All space around, above, below, and between eyelid lines is true transparency. No face, skin, eyebrows, cheeks, hair, nose, mouth, or other marks. Large horizontal centered pair with plenty of canvas margins. Hard flat pixel edges, no blur, no glow, no soft shadow, no text, no checkerboard graphic."
+    },
+    {
+      "name": "eyes_smiling",
+      "file": "eyes_smiling.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Create the SMILING-EYES interchangeable facial layer for the supplied Nihao pixel-art girl. Reference 1 shows character identity and pixel style. Reference 2 shows eye spacing and eye width. Generate ONLY a matched pair of joyfully smiling squinted/closed eyes, shaped as two inverted-U happy arches like ^ ^ but with softly stepped pixel curves and tiny outer lashes. Joyful eyes must curve upward into arches, distinct from the relaxed downward closed-blink curves. Match reference eye centers, widths and spacing, front-facing symmetrical pair. Use solid fully opaque deep brown-black strokes with crisp blocky stair-step pixel boundaries. No eyebrows, no skin, no white eye area, no pupils, no hair, no face, no cheeks, no other marks. True alpha transparency in all surrounding empty areas. Place pair centered with generous margins. No text, no extra frames, no blur, no shadow, no gradient, no 3D."
+    },
+    {
+      "name": "eyebrows_neutral",
+      "file": "eyebrows_neutral.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Facial puppet layer, eyebrows_neutral. From the supplied Nihao pixel-art character, isolate/reconstruct ONLY her TWO neutral eyebrows. The eyebrow on the viewer left is normally partly hidden by fringe; complete it as the counterpart of the fully visible eyebrow on the viewer right. A matched front-facing pair of small gently arched relaxed eyebrows. Deep brown-black solid pixels, slightly thick central stroke tapering to ends, crisp stair-step contours matching original pixel scale. Both eyebrows at the same horizontal level, natural widely spaced alignment above the reference eyes. One pair only, centered, spanning about 65 percent of canvas width with generous margins. Genuine transparency everywhere except solid eyebrow strokes. NO eyes, no face, no skin, no hair, no text, no other facial features. No shading, no gradient, no blur, no shadow. Fully opaque dark pixel strokes."
+    },
+    {
+      "name": "eyebrows_happy",
+      "file": "eyebrows_happy.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Create eyebrows_happy for Nihao girl, a transparent puppet facial overlay. Image 1 is the character reference; image 2 the exact neutral eyebrow pair. Change ONLY the eyebrow expression to a HAPPY bright welcoming expression: both brows subtly lifted and more gently arched than neutral. Preserve matching two-brow spacing, individual eyebrow width and pixel stroke weight. Only TWO dark solid eyebrows, one matched pair. Black-brown pixel strokes, simple thick stepped arches, crisp flat limited-color pixel art. No eye lashes, no eyes, no skin, no face, no hair, no cheeks, no additional features or text. Genuine alpha transparency surrounds and separates the opaque brows. Centered large pair with generous empty margins. No glow, no blur, no gradient, no cast shadow, no smoothing."
+    },
+    {
+      "name": "eyebrows_concerned",
+      "file": "eyebrows_concerned.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Generate eyebrows_concerned, a transparent puppet overlay for the Nihao pixel-art girl. Input 1 is character identity/style, input 2 is neutral brow pair to preserve width, separation, stroke weight and scale. Change expression to tender CONCERN/WORRY: inner brow ends closest to nose rise clearly upward; outer ends angle gently downward, forming a sympathetic sad-worried pair, not an angry inward-down scowl. Only TWO eyebrows, one matched front-view pair, both solid dark brown-black. Crisp stepped pixel strokes and fully opaque ink interiors, limited flat palette. Preserve left-right centers and pair spacing. Centered pair with generous margins. NO eyes, face, skin, hair, cheeks, tears, mouth, other features or text. Genuine alpha transparent background. No blur, gradient, soft glow, cast shadow or smoothing."
+    },
+    {
+      "name": "eyebrows_surprised",
+      "file": "eyebrows_surprised.png",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Generate eyebrows_surprised, the transparent eyebrow pair layer for the Nihao pixel-art girl. Input 1 is character reference; input 2 is neutral brow shape/style reference. Change eyebrows to a surprised delighted expression: two very high clearly rounded inverted-U arches, raised and more curved than neutral or happy. Preserve pair center spacing, dark brown-black color, simple stepped pixel boundaries and source stroke weight. ONE pair of eyebrows only, matched left and right at same height, no extra components. Entire eyebrows fully opaque; all background and empty arch interiors truly alpha transparent. Both brows centered with generous margins. NO eyes, no face, no skin, no hair, no other body parts, no extra lines, no text, no symbols. Authentic clean flat square-pixel sprite, no blur, no glow, no gradient, no shadow, no 3D."
+    }
+  ]
+}

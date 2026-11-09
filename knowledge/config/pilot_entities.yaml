@@ -1,0 +1,38 @@
+# Discovery inputs, not asserted entity identities. QIDs are resolved live through
+# the official Wikibase site's exact enwiki sitelinks and verified on retrieval.
+entities:
+  - {title: Forbidden City, city: Beijing, domain: attractions}
+  - {title: The Bund, city: Shanghai, domain: attractions}
+  - {title: Du Fu Thatched Cottage, city: Chengdu, domain: attractions}
+  - {title: Terracotta Army, city: Xian, domain: attractions}
+  - {title: Canton Tower, city: Guangzhou, domain: attractions}
+  - {title: Temple of Heaven, city: Beijing, domain: attractions}
+  - {title: Yu Garden, city: Shanghai, domain: attractions}
+  - {title: Wuhou Shrine, city: Chengdu, domain: attractions}
+  - {title: Giant Wild Goose Pagoda, city: Xian, domain: attractions}
+  - {title: Chen Clan Ancestral Hall, city: Guangzhou, domain: attractions}
+  - {title: Summer Palace, city: Beijing, domain: attractions}
+  - {title: Oriental Pearl Tower, city: Shanghai, domain: attractions}
+  - {title: Chengdu Research Base of Giant Panda Breeding, city: Chengdu, domain: attractions}
+  - {title: Small Wild Goose Pagoda, city: Xian, domain: attractions}
+  - {title: 'Sacred Heart Cathedral (Guangzhou)', city: Guangzhou, domain: attractions}
+  - {title: Beihai Park, city: Beijing, domain: attractions}
+  - {title: Shanghai Tower, city: Shanghai, domain: attractions}
+  - {title: Jinsha site, city: Chengdu, domain: attractions}
+  - {title: "Fortifications of Xi'an", city: Xian, domain: attractions}
+  - {title: 'Sun Yat-sen Memorial Hall (Guangzhou)', city: Guangzhou, domain: attractions}
+  - {title: Jingshan Park, city: Beijing, domain: attractions}
+  - {title: Shanghai Museum, city: Shanghai, domain: attractions}
+  - {title: Yonghe Temple, city: Beijing, domain: attractions}
+  - {title: Shanghai World Financial Center, city: Shanghai, domain: attractions}
+  - {title: Great Wall of China, city: null, domain: attractions}
+  - {title: Mutianyu, city: Beijing, domain: attractions}
+  - {title: Ming tombs, city: Beijing, domain: attractions}
+  - {title: Peking duck, city: Beijing, domain: food_culture}
+  - {title: Mapo tofu, city: Chengdu, domain: food_culture}
+  - {title: Hot pot, city: null, domain: food_culture}
+  - {title: Dim sum, city: Guangzhou, domain: food_culture}
+  - {title: Chinese tea culture, city: null, domain: food_culture}
+  - {title: Beijing South railway station, city: Beijing, domain: transportation}
+  - {title: Shanghai Hongqiao railway station, city: Shanghai, domain: transportation}
+  - {title: Guangzhou South railway station, city: Guangzhou, domain: transportation}

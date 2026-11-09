@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nihao:schema:links.schema.json",
+  "title": "Nihao links",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domain": {
+      "enum": [
+        "entry_visa",
+        "daily_life",
+        "attractions",
+        "food_culture",
+        "transportation"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "national",
+        "province",
+        "city",
+        "poi"
+      ]
+    },
+    "province": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_published_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "license": {
+      "type": "string"
+    },
+    "rights_status": {
+      "enum": [
+        "approved",
+        "metadata_only",
+        "needs_review",
+        "withdrawn"
+      ]
+    },
+    "content_status": {
+      "type": "string"
+    },
+    "data_version": {
+      "type": "string"
+    },
+    "from_id": {
+      "type": "string"
+    },
+    "to_id": {
+      "type": "string"
+    },
+    "relation": {
+      "enum": [
+        "depicted_by",
+        "described_by",
+        "appears_in_video",
+        "located_in",
+        "same_as"
+      ]
+    },
+    "evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "raw_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_record_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "normalization_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "entity_id",
+    "domain",
+    "scope",
+    "province",
+    "city",
+    "language",
+    "source_id",
+    "source_url",
+    "fetched_at",
+    "source_published_at",
+    "last_verified_at",
+    "license",
+    "rights_status",
+    "content_status",
+    "data_version",
+    "from_id",
+    "to_id",
+    "relation",
+    "evidence",
+    "confidence"
+  ],
+  "additionalProperties": true
+}

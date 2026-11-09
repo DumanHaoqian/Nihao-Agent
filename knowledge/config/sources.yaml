@@ -1,0 +1,168 @@
+# Nihao Agent v0.1 verified seed list, 2026-11-09.
+# Rights are source-specific and must be rechecked before commercial ingestion.
+# access_strategy: structured_download | review_each_file | metadata_only | review_then_download
+project: nihao-agent
+scope: china_nationwide
+pilot_cities: [Beijing, Shanghai, Chengdu, Xian, Guangzhou]
+user_agent_contact: ${NIHAO_CONTACT}  # set environment variable; do not use a fake email
+limits:
+  max_total_mb_pilot: 500
+  max_image_mb: 12
+  max_video_mb: 80
+  max_concurrency: 2
+  max_items_per_source: 50
+  max_commons_categories_depth: 2
+  retry_429: true
+  strict_license_gate: true
+sources:
+  - source_id: wikidata
+    pilot_entities_file: config/pilot_entities.yaml
+    domains: [attractions, food_culture, transportation]
+    kind: structured
+    url: https://query.wikidata.org/sparql
+    documentation: https://www.mediawiki.org/wiki/Wikidata_Query_Service/User_Manual
+    license: CC0
+    access_strategy: structured_download
+    scope: nationwide
+    priority: 1
+  - source_id: unesco_world_heritage
+    domains: [attractions]
+    kind: structured
+    url: https://data.unesco.org/explore/dataset/whc001/
+    api_docs: https://data.unesco.org/api-console/explore/v2.1/
+    dataset_id: whc001
+    license: CC-BY-SA-4.0
+    access_strategy: structured_download
+    scope: nationwide
+    priority: 1
+  - source_id: unesco_intangible_heritage
+    domains: [food_culture]
+    kind: structured
+    url: https://data.unesco.org/explore/dataset/ich001/
+    api_docs: https://data.unesco.org/api-console/explore/v2.1/
+    dataset_id: ich001
+    license: CC-BY-SA-4.0
+    access_strategy: structured_download
+    scope: nationwide
+    priority: 1
+  - source_id: osm_geofabrik_beijing
+    domains: [attractions, transportation, daily_life]
+    kind: osm_pbf
+    url: https://download.geofabrik.de/asia/china/beijing-latest.osm.pbf
+    documentation: https://download.geofabrik.de/asia/china.html
+    license: ODbL-1.0
+    access_strategy: structured_download
+    scope: pilot_city
+    priority: 1
+  - source_id: osm_geofabrik_china_full
+    domains: [attractions, transportation, daily_life]
+    kind: osm_pbf
+    url: https://download.geofabrik.de/asia/china-latest.osm.pbf
+    license: ODbL-1.0
+    access_strategy: structured_download
+    requires_flag: full-osm
+    scope: nationwide
+    priority: 3
+  - source_id: wikimedia_commons_attractions
+    max_media: 22
+    domains: [attractions]
+    kind: commons_category
+    url: https://commons.wikimedia.org/wiki/Category:Visitor_attractions_in_China
+    api: https://commons.wikimedia.org/w/api.php
+    category: 'Category:Visitor attractions in China'
+    license: per_file
+    access_strategy: review_each_file
+    scope: nationwide
+    priority: 1
+  - source_id: wikimedia_commons_food
+    max_media: 8
+    domains: [food_culture]
+    kind: commons_category
+    url: https://commons.wikimedia.org/wiki/Category:Cuisine_of_China
+    api: https://commons.wikimedia.org/w/api.php
+    category: 'Category:Cuisine of China'
+    license: per_file
+    access_strategy: review_each_file
+    scope: nationwide
+    priority: 2
+  - source_id: wikimedia_commons_video_china
+    domains: [attractions, food_culture, transportation]
+    kind: commons_category
+    url: https://commons.wikimedia.org/wiki/Category:Videos_from_China
+    api: https://commons.wikimedia.org/w/api.php
+    category: 'Category:Videos from China'
+    license: per_file
+    access_strategy: review_each_file
+    scope: nationwide
+    priority: 3
+  - source_id: wikimedia_commons_video_rail
+    domains: [transportation]
+    kind: commons_category
+    url: https://commons.wikimedia.org/wiki/Category:Videos_of_rail_transport_in_China
+    api: https://commons.wikimedia.org/w/api.php
+    category: 'Category:Videos of rail transport in China'
+    license: per_file
+    access_strategy: review_each_file
+    scope: nationwide
+    priority: 2
+  - source_id: wikivoyage_en_china
+    domains: [entry_visa, daily_life, attractions, food_culture, transportation]
+    kind: mediawiki_pages
+    url: https://en.wikivoyage.org/wiki/China
+    api: https://en.wikivoyage.org/w/api.php
+    pages: [China, Beijing, Shanghai, Chengdu, Xi'an, Guangzhou]
+    license: check_page_copyleft_and_attribution
+    access_strategy: review_then_download
+    scope: nationwide_plus_pilot
+    priority: 2
+  - source_id: national_immigration_administration
+    domains: [entry_visa]
+    kind: official_policy
+    url: https://en.nia.gov.cn/n147418/n147463/index.html
+    license: unknown_until_review
+    access_strategy: metadata_only
+    scope: nationwide
+    refresh_policy: review_frequently
+    priority: 1
+  - source_id: gov_cn_guide_foreigners
+    domains: [daily_life, transportation, entry_visa]
+    kind: official_guide
+    url: https://english.www.gov.cn/2025special/bizexpatsinchina2025
+    license: unknown_until_review
+    access_strategy: metadata_only
+    scope: nationwide
+    refresh_policy: review_monthly
+    priority: 1
+  - source_id: china_railway_12306_faq
+    domains: [transportation]
+    kind: official_guide
+    url: https://www.12306.cn/en/faq.html
+    license: unknown_until_review
+    access_strategy: metadata_only
+    scope: nationwide
+    refresh_policy: review_frequently
+    priority: 1
+  - source_id: wikipedia_en_pilot
+    domains: [attractions, food_culture, transportation, daily_life]
+    kind: wikipedia_pages
+    max_pages: 40
+    url: https://en.wikipedia.org/wiki/Forbidden_City
+    api: https://en.wikipedia.org/w/api.php
+    language: en
+    license: CC-BY-SA-4.0
+    access_strategy: review_then_download
+    acquisition_route: canonical_html
+    scope: nationwide_plus_pilot
+    priority: 1
+  - source_id: wikipedia_zh_pilot
+    domains: [attractions, food_culture, transportation, daily_life]
+    kind: wikipedia_pages
+    max_pages: 40
+    url: https://zh.wikipedia.org/wiki/故宫
+    api: https://zh.wikipedia.org/w/api.php
+    language: zh
+    license: CC-BY-SA-4.0
+    access_strategy: review_then_download
+    acquisition_route: canonical_html
+    scope: nationwide_plus_pilot
+    priority: 1

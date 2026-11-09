@@ -1,0 +1,242 @@
+[
+  {
+    "file": "eyes_open.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 197,
+      "y": 355,
+      "width": 1141,
+      "height": 380,
+      "cx": 767,
+      "cy": 544.5
+    },
+    "left": {
+      "x": 197,
+      "y": 355,
+      "width": 442,
+      "height": 380,
+      "cx": 417.5,
+      "cy": 544.5
+    },
+    "right": {
+      "x": 897,
+      "y": 355,
+      "width": 441,
+      "height": 379,
+      "cx": 1117,
+      "cy": 544
+    }
+  },
+  {
+    "file": "eyes_half_closed.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 232,
+      "y": 456,
+      "width": 1073,
+      "height": 258,
+      "cx": 768,
+      "cy": 584.5
+    },
+    "left": {
+      "x": 232,
+      "y": 456,
+      "width": 414,
+      "height": 258,
+      "cx": 438.5,
+      "cy": 584.5
+    },
+    "right": {
+      "x": 890,
+      "y": 456,
+      "width": 415,
+      "height": 258,
+      "cx": 1097,
+      "cy": 584.5
+    }
+  },
+  {
+    "file": "eyes_closed.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 292,
+      "y": 500,
+      "width": 953,
+      "height": 115,
+      "cx": 768,
+      "cy": 557
+    },
+    "left": {
+      "x": 292,
+      "y": 500,
+      "width": 318,
+      "height": 115,
+      "cx": 450.5,
+      "cy": 557
+    },
+    "right": {
+      "x": 926,
+      "y": 501,
+      "width": 319,
+      "height": 114,
+      "cx": 1085,
+      "cy": 557.5
+    }
+  },
+  {
+    "file": "eyes_smiling.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 275,
+      "y": 448,
+      "width": 986,
+      "height": 140,
+      "cx": 767.5,
+      "cy": 517.5
+    },
+    "left": {
+      "x": 275,
+      "y": 448,
+      "width": 367,
+      "height": 140,
+      "cx": 458,
+      "cy": 517.5
+    },
+    "right": {
+      "x": 893,
+      "y": 448,
+      "width": 368,
+      "height": 140,
+      "cx": 1076.5,
+      "cy": 517.5
+    }
+  },
+  {
+    "file": "eyebrows_neutral.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 249,
+      "y": 450,
+      "width": 1039,
+      "height": 101,
+      "cx": 768,
+      "cy": 500
+    },
+    "left": {
+      "x": 249,
+      "y": 450,
+      "width": 367,
+      "height": 101,
+      "cx": 432,
+      "cy": 500
+    },
+    "right": {
+      "x": 921,
+      "y": 450,
+      "width": 367,
+      "height": 101,
+      "cx": 1104,
+      "cy": 500
+    }
+  },
+  {
+    "file": "eyebrows_happy.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 256,
+      "y": 450,
+      "width": 1024,
+      "height": 124,
+      "cx": 767.5,
+      "cy": 511.5
+    },
+    "left": {
+      "x": 256,
+      "y": 450,
+      "width": 370,
+      "height": 124,
+      "cx": 440.5,
+      "cy": 511.5
+    },
+    "right": {
+      "x": 910,
+      "y": 450,
+      "width": 370,
+      "height": 123,
+      "cx": 1094.5,
+      "cy": 511
+    }
+  },
+  {
+    "file": "eyebrows_concerned.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 264,
+      "y": 433,
+      "width": 1009,
+      "height": 156,
+      "cx": 768,
+      "cy": 510.5
+    },
+    "left": {
+      "x": 264,
+      "y": 433,
+      "width": 367,
+      "height": 156,
+      "cx": 447,
+      "cy": 510.5
+    },
+    "right": {
+      "x": 905,
+      "y": 433,
+      "width": 368,
+      "height": 156,
+      "cx": 1088.5,
+      "cy": 510.5
+    }
+  },
+  {
+    "file": "eyebrows_surprised.png",
+    "width": 1536,
+    "height": 1024,
+    "alphaThreshold": 128,
+    "bounds": {
+      "x": 213,
+      "y": 410,
+      "width": 1110,
+      "height": 184,
+      "cx": 767.5,
+      "cy": 501.5
+    },
+    "left": {
+      "x": 213,
+      "y": 410,
+      "width": 456,
+      "height": 184,
+      "cx": 440.5,
+      "cy": 501.5
+    },
+    "right": {
+      "x": 867,
+      "y": 410,
+      "width": 456,
+      "height": 184,
+      "cx": 1094.5,
+      "cy": 501.5
+    }
+  }
+]

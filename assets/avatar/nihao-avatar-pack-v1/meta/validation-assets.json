@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "checks": [
+    "PNG decodes",
+    "1024x1536 runtime registration",
+    "nonempty RGBA with transparent pixels",
+    "binary alpha",
+    "shared palette",
+    "required parts/states",
+    "source and anchor references",
+    "transparent concepts",
+    "neutral layers match master byte-for-byte",
+    "animation has actual changing frames"
+  ],
+  "deliverables": {
+    "concept": 4,
+    "layers": 37,
+    "expressions": 6,
+    "poses": 7,
+    "animationClips": 5,
+    "animationFrames": 53,
+    "atlases": 5,
+    "mouths": 7
+  },
+  "checkedRuntimePngs": 110,
+  "concept": [
+    {
+      "file": "concept/nihao_character_sheet.png",
+      "width": 1536,
+      "height": 1024,
+      "transparent": true
+    },
+    {
+      "file": "concept/nihao_full_front_neutral.png",
+      "width": 1024,
+      "height": 1536,
+      "transparent": true
+    },
+    {
+      "file": "concept/nihao_half_front_neutral.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": true
+    },
+    {
+      "file": "concept/nihao_half_three_quarter.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": true
+    }
+  ],
+  "animationChecks": [
+    {
+      "name": "blink",
+      "frames": 5,
+      "distinctFrames": 3,
+      "durationMs": 2010,
+      "loop": true
+    },
+    {
+      "name": "idle_loop",
+      "frames": 16,
+      "distinctFrames": 9,
+      "durationMs": 2000,
+      "loop": true
+    },
+    {
+      "name": "talking",
+      "frames": 8,
+      "distinctFrames": 5,
+      "durationMs": 880,
+      "loop": true
+    },
+    {
+      "name": "waving",
+      "frames": 12,
+      "distinctFrames": 8,
+      "durationMs": 1200,
+      "loop": true
+    },
+    {
+      "name": "nodding",
+      "frames": 12,
+      "distinctFrames": 6,
+      "durationMs": 1080,
+      "loop": false
+    }
+  ],
+  "failures": []
+}

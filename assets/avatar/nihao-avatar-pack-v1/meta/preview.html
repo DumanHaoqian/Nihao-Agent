@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nihao Agent · Avatar Studio</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root { color-scheme: light; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #122647; background: #f1f5fb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #6f9aff; outline-offset: 3px; }
+    header { padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; background: white; border-bottom: 1px solid #dce4ef; }
+    h1 { margin: 0; font-size: 21px; letter-spacing: -.6px; }
+    h1 span { font-weight: 400; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #2459d5; letter-spacing: 2px; margin: 0 0 5px; text-transform: uppercase; }
+    .badge { border-radius: 99px; color: #2f548d; padding: 8px 12px; font-size: 12px; background: #edf3ff; }
+    main { max-width: 1320px; margin: auto; padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; }
+    .stage-panel, aside { min-width: 0; border: 1px solid #dae3f0; border-radius: 18px; background: white; overflow: hidden; }
+    .stage-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 15px 19px; gap: 12px; border-bottom: 1px solid #e4eaf3; }
+    .stage-toolbar strong { font-size: 14px; }
+    .backgrounds { display: flex; gap: 6px; }
+    .backgrounds button { border: 1px solid #cdd9e9; background: white; color: #426083; border-radius: 8px; padding: 6px 9px; font-size: 12px; }
+    .backgrounds button[aria-pressed="true"] { border-color: #2459d5; color: #2459d5; background: #edf3ff; }
+    .stage { min-height: 480px; height: min(68vh, 800px); display: flex; align-items: center; justify-content: center; position: relative; padding: 14px; overflow: hidden; }
+    .stage[data-background="checkerboard"] { background-color: #f5f7fc; background-image: linear-gradient(45deg, #e3e9f2 25%, transparent 25%), linear-gradient(-45deg, #e3e9f2 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e3e9f2 75%), linear-gradient(-45deg, transparent 75%, #e3e9f2 75%); background-size: 24px 24px; background-position: 0 0, 0 12px, 12px -12px, -12px 0; }
+    .stage[data-background="light"] { background: #f8fafc; }
+    .stage[data-background="dark"] { background: #11223f; }
+    canvas { display: block; min-height: 0; min-width: 0; max-height: 100%; max-width: 100%; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+    .transport { display: grid; gap: 12px; padding: 18px 20px; border-top: 1px solid #e4eaf3; }
+    .transport-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .primary, .secondary { border: 0; border-radius: 9px; padding: 10px 16px; font-size: 13px; }
+    .primary { background: #2459d5; color: white; font-weight: 650; }
+    .secondary { background: #edf2fa; color: #2f548d; }
+    .small { font-size: 12px; color: #62748d; }
+    label { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #516581; }
+    input[type="range"] { accent-color: #2459d5; }
+    #timeline { width: 100%; }
+    #frame-label { margin-left: auto; font-variant-numeric: tabular-nums; }
+    aside { padding: 22px; align-self: start; }
+    section + section { margin-top: 22px; padding-top: 19px; border-top: 1px solid #e5ebf4; }
+    h2 { font-size: 13px; margin: 0 0 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chip { border: 1px solid #dae4f1; color: #49617f; background: #fff; border-radius: 8px; font-size: 12px; padding: 8px 10px; }
+    .chip[aria-pressed="true"] { border-color: #2459d5; color: #2459d5; background: #eef4ff; font-weight: 650; }
+    .empty { color: #8b98aa; font-size: 12px; margin: 3px 0; }
+    .info { line-height: 1.7; font-size: 12px; color: #697c96; margin: 10px 0 0; }
+    .slider-row { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+    .slider-row input { width: 125px; }
+    details { margin-top: 16px; }
+    summary { font-size: 12px; color: #2f548d; cursor: pointer; }
+    #layer-list { display: grid; gap: 7px; max-height: 210px; overflow: auto; margin-top: 10px; }
+    #layer-list label { font-family: ui-monospace, monospace; font-size: 11px; }
+    #status { padding: 11px 20px; background: #f6f9fd; color: #647a98; font-size: 12px; line-height: 1.6; border-top: 1px solid #e4eaf3; overflow-wrap: anywhere; }
+    #status[data-error="true"] { background: #fff3f1; color: #ac3c30; }
+    a { color: #2459d5; }
+    footer { padding: 0 28px 24px; margin: auto; max-width: 1320px; color: #7888a0; font-size: 11px; line-height: 1.7; }
+    @media (max-width: 800px) { header { padding: 18px; } .badge { display: none; } main { padding: 14px; grid-template-columns: 1fr; } .stage { min-height: 360px; height: 58vh; } aside { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <header><div><p class="eyebrow">Avatar Asset Pack</p><h1>Nihao <span>Agent</span></h1></div><div class="badge">透明 PNG · Pixel Art · 2D 交互角色</div></header>
+  <main>
+    <div class="stage-panel">
+      <div class="stage-toolbar"><strong id="selection-label">正在加载资产…</strong><div class="backgrounds" aria-label="预览背景"><button data-bg="checkerboard" aria-pressed="true">透明网格</button><button data-bg="light" aria-pressed="false">浅色</button><button data-bg="dark" aria-pressed="false">深色</button></div></div>
+      <div class="stage" id="stage" data-background="checkerboard"><canvas id="avatar" width="1024" height="1536" aria-label="Nihao 虚拟人预览"></canvas></div>
+      <div class="transport">
+        <input type="range" id="timeline" min="0" max="0" value="0" step="1" aria-label="动画帧" disabled>
+        <div class="transport-row"><button id="play" class="primary" disabled>暂停</button><button id="restart" class="secondary" disabled>重播</button><label><input type="checkbox" id="loop">循环</label><label>速度 <input type="range" id="speed" min="0.25" max="2" step="0.25" value="1"><span id="speed-value">1×</span></label><span class="small" id="frame-label">—</span></div>
+      </div>
+      <div id="status" role="status" aria-live="polite">读取 manifest.json…</div>
+    </div>
+    <aside>
+      <section><h2>动画</h2><div class="chips" id="animation-buttons"></div></section>
+      <section><h2>表情</h2><div class="chips" id="expression-buttons"></div></section>
+      <section><h2>动作姿态</h2><div class="chips" id="pose-buttons"></div></section>
+      <section><h2>分层检查</h2><button id="layer-mode" class="chip" aria-pressed="false">显示图层组合</button><div class="slider-row"><label for="head-angle">头部转动</label><input id="head-angle" type="range" min="-8" max="8" step="1" value="0" aria-label="头部转动角度"><span class="small" id="head-angle-value">0°</span></div><p class="info">分层模式可切换表情和检查透明区域。头部转动用于检查连接处，不改变导出的 PNG。</p><details><summary>图层可见性</summary><div id="layer-list"></div></details></section>
+      <section><h2>接入资料</h2><p class="info"><a href="manifest.json" target="_blank" rel="noopener">查看资产清单</a> · <a href="INTEGRATION.md" target="_blank" rel="noopener">接入说明</a></p><p class="info" id="asset-summary"></p></section>
+    </aside>
+  </main>
+  <footer>本预览展示透明 PNG、表情替换与序列帧播放。素材按分层木偶思路组织；当前包不包含 Live2D Cubism 绑定工程或 .moc3 模型。</footer>
+  <script type="module" src="runtime.js"></script>
+</body>
+</html>

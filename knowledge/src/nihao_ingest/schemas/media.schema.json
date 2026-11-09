@@ -1,0 +1,275 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nihao:schema:media.schema.json",
+  "title": "Nihao media",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "entity_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domain": {
+      "enum": [
+        "entry_visa",
+        "daily_life",
+        "attractions",
+        "food_culture",
+        "transportation"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "national",
+        "province",
+        "city",
+        "poi"
+      ]
+    },
+    "province": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "fetched_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_published_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "license": {
+      "type": "string"
+    },
+    "rights_status": {
+      "enum": [
+        "approved",
+        "metadata_only",
+        "needs_review",
+        "withdrawn"
+      ]
+    },
+    "content_status": {
+      "type": "string"
+    },
+    "data_version": {
+      "type": "string"
+    },
+    "asset_id": {
+      "type": "string"
+    },
+    "modality": {
+      "enum": [
+        "image",
+        "video",
+        "audio"
+      ]
+    },
+    "path": {
+      "type": "string"
+    },
+    "original_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "file_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "mime": {
+      "type": "string"
+    },
+    "width": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "height": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "duration_seconds": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "exclusiveMinimum": 0
+    },
+    "author": {
+      "type": "string"
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "license_url": {
+      "type": "string"
+    },
+    "restrictions": {
+      "type": "string"
+    },
+    "caption_zh": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caption_en": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ocr_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retrieved_at": {
+      "type": "string"
+    },
+    "annotation_status": {
+      "type": "string"
+    },
+    "raw_path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "raw_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_record_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "normalization_version": {
+      "type": "string"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "thumbnail_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "parent_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "licensing_evidence": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "declaration": {
+          "type": "string"
+        },
+        "evidence_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "permission_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "required": [
+        "method",
+        "declaration",
+        "evidence_url"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "id",
+    "entity_id",
+    "domain",
+    "scope",
+    "province",
+    "city",
+    "language",
+    "source_id",
+    "source_url",
+    "fetched_at",
+    "source_published_at",
+    "last_verified_at",
+    "license",
+    "rights_status",
+    "content_status",
+    "data_version",
+    "asset_id",
+    "modality",
+    "path",
+    "original_url",
+    "file_page_url",
+    "mime",
+    "width",
+    "height",
+    "duration_seconds",
+    "author",
+    "attribution",
+    "license_url",
+    "restrictions",
+    "caption_zh",
+    "caption_en",
+    "ocr_text",
+    "retrieved_at",
+    "annotation_status",
+    "sha256"
+  ],
+  "additionalProperties": true
+}

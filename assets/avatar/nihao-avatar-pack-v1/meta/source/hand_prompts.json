@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "reference": "meta/source/master_full.png",
+  "transparent_background": true,
+  "prompts": [
+    {
+      "name": "hand_wave",
+      "prompt": "Use case: precise-object-edit. Make one isolated replacement hand layer for this exact cute 2D pixel-art Nihao girl. Reference image is for character style and skin palette only. Draw ONLY the requested hand/gesture part on a genuinely transparent PNG background, no character, no face, no body, no arm, no clothing, no sleeve, no text. Match her warm light peach skin, subtle single salmon-peach shadow tone, and solid dark chocolate pixel outline. Crisp square pixel clusters, stepped silhouette, consistent pixel scale, fully opaque fills, two shade levels, simple charming chibi anatomy. No smooth vector curves, no 3D, no gradients, no glow, no fuzzy edges. Center the asset with plenty of transparency around it.\nOne open right-hand palm facing the viewer, wrist extending from bottom center. Four short upright fingers clearly separated at top and one thumb at image-left, exactly five digits total. Friendly hello wave hand shape, a cute compact open palm. Very short wrist nub at bottom for animation overlap. Do not include any forearm or sleeve. No motion lines. Palm is blank with only one short pixel crease if needed."
+    },
+    {
+      "name": "hand_point",
+      "prompt": "Use case: precise-object-edit. Make one isolated replacement hand layer for this exact cute 2D pixel-art Nihao girl. Reference image is for character style and skin palette only. Draw ONLY the requested hand/gesture part on a genuinely transparent PNG background, no character, no face, no body, no arm, no clothing, no sleeve, no text. Match her warm light peach skin, subtle single salmon-peach shadow tone, and solid dark chocolate pixel outline. Crisp square pixel clusters, stepped silhouette, consistent pixel scale, fully opaque fills, two shade levels, simple charming chibi anatomy. No smooth vector curves, no 3D, no gradients, no glow, no fuzzy edges. Center the asset with plenty of transparency around it.\nOne right-hand pointing gesture: index finger extended straight UP, the three other fingers folded into a soft fist, thumb resting across them toward image-left. Wrist extends from bottom center. Exactly one long raised index finger, other digits compact and curled. Cute compact chibi pointing hand, short wrist nub for animation overlap. No forearm, no sleeve, no arrows or motion marks."
+    },
+    {
+      "name": "hands_welcome",
+      "prompt": "Use case: precise-object-edit. Make one isolated replacement paired-hands layer for this exact Nihao Agent 2D pixel-art girl. Reference is for skin palette and art style only.\nAsset: Chinese welcome greeting, TWO HANDS TOGETHER in a gentle traditional Chinese fist-and-palm greeting (拱手礼): one hand makes a relaxed fist, the other open palm gently covers/wraps it from the front. Viewed from front. Both hands form a single compact joined rounded shape at center. The two short wrist stubs exit horizontally on the far LEFT and far RIGHT edges, so this part can connect to two bent forearms. No downward wrist, no sleeves, no forearms, no whole arms. No vertical prayer hands; this is a Chinese cupped fist-and-palm welcome gesture.\nONLY these two joined hands and very short left/right wrist stubs on genuine alpha transparency. Warm light peach skin, one restrained salmon-peach shadow tone and an unbroken fully opaque thick dark chocolate outline. Simple readable chibi hands with no anatomical complexity, clear overlapping palm over fist. Crisp square pixel clusters, flat opaque colors, stair-step edges, consistent pixel scale. No gradients, 3D, blur, glow, smooth curves, other body parts, face, character, clothing, text, UI, logos or symbols. Centered with generous transparent margin. The gesture should be friendly and welcoming."
+    }
+  ]
+}

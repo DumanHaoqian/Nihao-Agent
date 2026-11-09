@@ -1,0 +1,24 @@
+# Nihao Agent
+
+This is the Nihao travel-chat fork of DeepSeek Harness. The user requested a small text-and-image chat MVP, Poe `gpt-5.4-mini`, real streaming, a screenshot-inspired browser UI, and removal of unused upstream applications. `Nihao-Agent/` is the project root and contains `package.json`; run the app's npm commands here. The original source archive is preserved at `.local/archives/deepseek-harness-upstream-backup.tar.gz`.
+
+- `apps/nihao/server` mounts the real Harness AgentLoop and streams text to the browser.
+- `apps/nihao/web` owns React UI, EN/中文 copy, and the streaming client.
+- `packages/` and `vendor/` retain the Harness runtime dependency closure. `docs/retained-packages.json` records retained paths and reasons. Extend through existing plugins rather than changing the loop.
+- `scripts/` owns this fork's build and development entry points. Upstream CLI/profile launch, release, desktop, Python, and repository-wide CI workflows are not part of this application.
+- `knowledge/` contains the separate knowledge ingestion and retrieval project. Use its own instructions for that work; it is not a second root for the chat application's npm commands.
+- `assets/brand/` and `assets/avatar/` preserve user-supplied source artwork. Web-ready copies remain in `apps/nihao/web/public/brand/` so the existing browser asset URLs continue to work.
+- `.local/` holds ignored local archives and reference material. The supplied official Doubao examples are in `.local/reference/doubao/tts/` and `.local/reference/doubao/asr/`; they are not runtime dependencies of the chat application.
+- `deepseek-harness-master/nihao-knowledge` is only a compatibility symlink to `knowledge/`. Keep the legacy `deepseek-harness-master/` wrapper ignored and out of source/build discovery; new commands and documentation must use the project root and `knowledge/` directly.
+
+Use Node 24.9+ and npm. Run `npm run typecheck`, `npm test`, and `npm run build` for runtime changes. Test the browser for UI changes. Keep real API verification separate from deterministic tests, and report which actually ran. Never replace a failed real request with canned text.
+
+Keep `POE_API_KEY`, `DOUBAO_API_KEY` and `BAIDU_MAP_API_KEY` in the server environment. Never print them, persist them in source, send them to the browser, or include raw provider errors in UI. The Baidu MCP URL includes the AK and must never be logged. All model calls must stream. Cancelling a response or read-aloud playback must stop upstream work. Keep conversations isolated and validate client history.
+
+The MVP supports uploaded JPEG/PNG/WebP images, on-demand Doubao streaming read-aloud output, and opt-in microphone dictation through Doubao real-time ASR 2.0 (Chinese/English). Dictation fills an editable draft and never automatically sends a chat message. Stop microphone tracks and upstream recognition on cancellation, page exit, new chat, and failures. It has no web search, video/audio file uploads, arbitrary file tools, shell tools, bookings, payments, or account system. Uploaded images, microphone audio and synthesized speech must not be written to disk by the application. Do not imply unavailable capabilities in copy. Render model replies as plain text. Retain keyboard/IME support and responsive behavior. Follow the user-supplied DeepSeek screenshot and the unslop skill; record deliberate design differences in the design review.
+
+Preserve licenses. Keep strict TypeScript and app-level tests meaningful. Do not execute SHA/SHA256 checks or add hash/integrity gates. If training is added later, actual parallel batch size is distinct from gradient accumulation; never substitute the latter without explicit consent.
+
+Baidu Maps is connected through app-owned Harness tools and the official remote MCP SDK. Searches and routes must use validated provider facts; plans may only reference session-owned POI IDs. Travel state is short-lived server memory, committed only after a completed turn. The browser displays validated structured artifacts only on successful completion, with Baidu navigation links. The first version supports 1–3 days, up to six stops per day, and checks travel/visit/buffer durations against a daily time budget. Opening hours, tickets and future traffic are not automatically verified. Preserve the distinction between provider data and estimated visit durations. Browser map embedding is not configured.
+
+Map display text and controls follow each assistant reply's English/Chinese language, independently of the page language selector. Translation operates only on display copies through the same streaming adapter; never mutate original map facts or numeric values. Failed translations must not silently publish mixed-language cards. Do not promise control over the language of an external Baidu page.

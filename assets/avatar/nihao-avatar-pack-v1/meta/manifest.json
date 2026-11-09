@@ -1,0 +1,2237 @@
+{
+  "version": "1.0.0",
+  "name": "Nihao Agent",
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "pixelGrid": 4,
+    "alpha": "binary"
+  },
+  "coordinateSystem": "top-left origin; x right; y down; left/right are character anatomical sides",
+  "anchors": {
+    "root": [
+      512,
+      1480
+    ],
+    "head": [
+      512,
+      748
+    ],
+    "neck": [
+      512,
+      748
+    ],
+    "torso": [
+      512,
+      912
+    ],
+    "shoulder_left": [
+      660,
+      884
+    ],
+    "shoulder_right": [
+      364,
+      884
+    ]
+  },
+  "layers": [
+    {
+      "id": "legs",
+      "file": "layered/legs.png",
+      "z": 5,
+      "parent": "root",
+      "pivot": [
+        512,
+        912
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 412,
+        "top": 1252,
+        "width": 204,
+        "height": 240
+      },
+      "source": "meta/source/legs.png"
+    },
+    {
+      "id": "torso",
+      "file": "layered/torso.png",
+      "z": 30,
+      "parent": "root",
+      "pivot": [
+        512,
+        912
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 332,
+        "top": 728,
+        "width": 360,
+        "height": 568
+      },
+      "source": "meta/source/torso.png"
+    },
+    {
+      "id": "hair_back",
+      "file": "layered/hair_back.png",
+      "z": 31,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 268,
+        "top": 284,
+        "width": 488,
+        "height": 456
+      },
+      "source": "meta/source/hair_back.png"
+    },
+    {
+      "id": "face_base",
+      "file": "layered/face_base.png",
+      "z": 40,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 292,
+        "top": 344,
+        "width": 440,
+        "height": 424
+      },
+      "source": "meta/source/face_base.png"
+    },
+    {
+      "id": "bun",
+      "file": "layered/bun.png",
+      "z": 32,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 352,
+        "top": 64,
+        "width": 324,
+        "height": 272
+      },
+      "source": "meta/source/bun.png"
+    },
+    {
+      "id": "ribbon",
+      "file": "layered/ribbon.png",
+      "z": 51,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 200,
+        "top": 224,
+        "width": 476,
+        "height": 256
+      },
+      "source": "meta/source/ribbon.png"
+    },
+    {
+      "id": "hair_front",
+      "file": "layered/hair_front.png",
+      "z": 50,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 260,
+        "top": 264,
+        "width": 508,
+        "height": 368
+      },
+      "source": "meta/source/hair_front.png"
+    },
+    {
+      "id": "side_hair_right",
+      "file": "layered/side_hair_right.png",
+      "z": 52,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 348,
+        "top": 548,
+        "width": 36,
+        "height": 212
+      },
+      "source": "meta/source/side_hair_right.png"
+    },
+    {
+      "id": "side_hair_left",
+      "file": "layered/side_hair_left.png",
+      "z": 52,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 652,
+        "top": 548,
+        "width": 36,
+        "height": 212
+      },
+      "source": "meta/source/side_hair_left.png"
+    },
+    {
+      "id": "eyes_open",
+      "file": "layered/eyes_open.png",
+      "z": 45,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyes",
+      "state": "open",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 548,
+        "width": 256,
+        "height": 88
+      },
+      "source": "meta/source/eyes_open.png"
+    },
+    {
+      "id": "eyes_half_closed",
+      "file": "layered/eyes_half_closed.png",
+      "z": 45,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyes",
+      "state": "half_closed",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 576,
+        "width": 256,
+        "height": 52
+      },
+      "source": "meta/source/eyes_half_closed.png"
+    },
+    {
+      "id": "eyes_closed",
+      "file": "layered/eyes_closed.png",
+      "z": 45,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyes",
+      "state": "closed",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 608,
+        "width": 256,
+        "height": 12
+      },
+      "source": "meta/source/eyes_closed.png"
+    },
+    {
+      "id": "eyes_smiling",
+      "file": "layered/eyes_smiling.png",
+      "z": 45,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyes",
+      "state": "smiling",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 580,
+        "width": 256,
+        "height": 32
+      },
+      "source": "meta/source/eyes_smiling.png"
+    },
+    {
+      "id": "eyebrows_neutral",
+      "file": "layered/eyebrows_neutral.png",
+      "z": 46,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyebrows",
+      "state": "neutral",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 516,
+        "width": 256,
+        "height": 20
+      },
+      "source": "meta/source/eyebrows_neutral.png"
+    },
+    {
+      "id": "eyebrows_happy",
+      "file": "layered/eyebrows_happy.png",
+      "z": 46,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyebrows",
+      "state": "happy",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 516,
+        "width": 256,
+        "height": 20
+      },
+      "source": "meta/source/eyebrows_happy.png"
+    },
+    {
+      "id": "eyebrows_concerned",
+      "file": "layered/eyebrows_concerned.png",
+      "z": 46,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyebrows",
+      "state": "concerned",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 512,
+        "width": 256,
+        "height": 24
+      },
+      "source": "meta/source/eyebrows_concerned.png"
+    },
+    {
+      "id": "eyebrows_surprised",
+      "file": "layered/eyebrows_surprised.png",
+      "z": 46,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "eyebrows",
+      "state": "surprised",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 384,
+        "top": 504,
+        "width": 256,
+        "height": 24
+      },
+      "source": "meta/source/eyebrows_surprised.png"
+    },
+    {
+      "id": "mouth_closed",
+      "file": "layered/mouth_closed.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "closed",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 480,
+        "top": 664,
+        "width": 64,
+        "height": 20
+      },
+      "source": "meta/source/mouth_closed.png"
+    },
+    {
+      "id": "mouth_slight_open",
+      "file": "layered/mouth_slight_open.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "slight_open",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 484,
+        "top": 660,
+        "width": 56,
+        "height": 28
+      },
+      "source": "meta/source/mouth_slight_open.png"
+    },
+    {
+      "id": "mouth_medium_open",
+      "file": "layered/mouth_medium_open.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "medium_open",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 480,
+        "top": 656,
+        "width": 64,
+        "height": 40
+      },
+      "source": "meta/source/mouth_medium_open.png"
+    },
+    {
+      "id": "mouth_wide_open",
+      "file": "layered/mouth_wide_open.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "wide_open",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 476,
+        "top": 648,
+        "width": 72,
+        "height": 56
+      },
+      "source": "meta/source/mouth_wide_open.png"
+    },
+    {
+      "id": "mouth_smile",
+      "file": "layered/mouth_smile.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "smile",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 476,
+        "top": 656,
+        "width": 72,
+        "height": 36
+      },
+      "source": "meta/source/mouth_smile.png"
+    },
+    {
+      "id": "mouth_o_shape",
+      "file": "layered/mouth_o_shape.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "o_shape",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 492,
+        "top": 652,
+        "width": 40,
+        "height": 48
+      },
+      "source": "meta/source/mouth_o_shape.png"
+    },
+    {
+      "id": "mouth_downturned",
+      "file": "layered/mouth_downturned.png",
+      "z": 47,
+      "parent": "head",
+      "pivot": [
+        512,
+        748
+      ],
+      "group": "mouth",
+      "state": "downturned",
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 484,
+        "top": 664,
+        "width": 56,
+        "height": 20
+      },
+      "source": "meta/source/mouth_downturned.png"
+    },
+    {
+      "id": "arm_upper_left",
+      "file": "layered/arm_upper_left.png",
+      "z": 25,
+      "parent": "torso",
+      "pivot": [
+        660,
+        884
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 632,
+        "top": 868,
+        "width": 84,
+        "height": 152
+      },
+      "source": "meta/source/arm_upper_left.png"
+    },
+    {
+      "id": "forearm_left",
+      "file": "layered/forearm_left.png",
+      "z": 27,
+      "parent": "arm_upper_left",
+      "pivot": [
+        684,
+        997
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 660,
+        "top": 980,
+        "width": 80,
+        "height": 136
+      },
+      "source": "meta/source/forearm_left.png"
+    },
+    {
+      "id": "hand_left",
+      "file": "layered/hand_left.png",
+      "z": 29,
+      "parent": "forearm_left",
+      "pivot": [
+        713,
+        1097
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 688,
+        "top": 1076,
+        "width": 72,
+        "height": 92
+      },
+      "source": "meta/source/hand_left.png"
+    },
+    {
+      "id": "arm_upper_right",
+      "file": "layered/arm_upper_right.png",
+      "z": 25,
+      "parent": "torso",
+      "pivot": [
+        364,
+        884
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 308,
+        "top": 868,
+        "width": 84,
+        "height": 152
+      },
+      "source": "meta/source/arm_upper_right.png"
+    },
+    {
+      "id": "forearm_right",
+      "file": "layered/forearm_right.png",
+      "z": 27,
+      "parent": "arm_upper_right",
+      "pivot": [
+        340,
+        997
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 284,
+        "top": 980,
+        "width": 80,
+        "height": 140
+      },
+      "source": "meta/source/forearm_right.png"
+    },
+    {
+      "id": "hand_right",
+      "file": "layered/hand_right.png",
+      "z": 29,
+      "parent": "forearm_right",
+      "pivot": [
+        311,
+        1097
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 264,
+        "top": 1084,
+        "width": 76,
+        "height": 84
+      },
+      "source": "meta/source/hand_right.png"
+    },
+    {
+      "id": "hand_wave",
+      "file": "layered/hand_wave.png",
+      "z": 60,
+      "parent": "torso",
+      "pivot": [
+        512,
+        960
+      ],
+      "default": false,
+      "visible": false,
+      "alphaBounds": {
+        "left": 464,
+        "top": 920,
+        "width": 100,
+        "height": 112
+      },
+      "source": "meta/source/hand_wave.png"
+    },
+    {
+      "id": "hand_point",
+      "file": "layered/hand_point.png",
+      "z": 60,
+      "parent": "torso",
+      "pivot": [
+        512,
+        960
+      ],
+      "default": false,
+      "visible": false,
+      "alphaBounds": {
+        "left": 472,
+        "top": 920,
+        "width": 84,
+        "height": 120
+      },
+      "source": "meta/source/hand_point.png"
+    },
+    {
+      "id": "hands_welcome",
+      "file": "layered/hands_welcome.png",
+      "z": 60,
+      "parent": "torso",
+      "pivot": [
+        512,
+        960
+      ],
+      "default": false,
+      "visible": false,
+      "alphaBounds": {
+        "left": 424,
+        "top": 920,
+        "width": 180,
+        "height": 104
+      },
+      "source": "meta/source/hands_welcome.png"
+    },
+    {
+      "id": "joint_elbow_left",
+      "file": "layered/joint_elbow_left.png",
+      "z": 29.5,
+      "parent": "arm_upper_left",
+      "pivot": [
+        684,
+        997
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 660,
+        "top": 980,
+        "width": 48,
+        "height": 36
+      },
+      "source": "meta/source/joint_cover.png"
+    },
+    {
+      "id": "joint_wrist_left",
+      "file": "layered/joint_wrist_left.png",
+      "z": 29.5,
+      "parent": "forearm_left",
+      "pivot": [
+        713,
+        1097
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 692,
+        "top": 1080,
+        "width": 40,
+        "height": 36
+      },
+      "source": "meta/source/joint_cover.png"
+    },
+    {
+      "id": "joint_elbow_right",
+      "file": "layered/joint_elbow_right.png",
+      "z": 29.5,
+      "parent": "arm_upper_right",
+      "pivot": [
+        340,
+        997
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 316,
+        "top": 980,
+        "width": 48,
+        "height": 36
+      },
+      "source": "meta/source/joint_cover.png"
+    },
+    {
+      "id": "joint_wrist_right",
+      "file": "layered/joint_wrist_right.png",
+      "z": 29.5,
+      "parent": "forearm_right",
+      "pivot": [
+        311,
+        1097
+      ],
+      "default": true,
+      "visible": true,
+      "alphaBounds": {
+        "left": 292,
+        "top": 1080,
+        "width": 40,
+        "height": 36
+      },
+      "source": "meta/source/joint_cover.png"
+    }
+  ],
+  "expressions": {
+    "neutral": {
+      "file": "expressions/neutral.png",
+      "eyes": "open",
+      "eyebrows": "neutral",
+      "mouth": "closed"
+    },
+    "happy": {
+      "file": "expressions/happy.png",
+      "eyes": "smiling",
+      "eyebrows": "happy",
+      "mouth": "smile"
+    },
+    "excited": {
+      "file": "expressions/excited.png",
+      "eyes": "open",
+      "eyebrows": "surprised",
+      "mouth": "wide_open"
+    },
+    "thinking": {
+      "file": "expressions/thinking.png",
+      "eyes": "half_closed",
+      "eyebrows": "concerned",
+      "mouth": "closed"
+    },
+    "concerned": {
+      "file": "expressions/concerned.png",
+      "eyes": "open",
+      "eyebrows": "concerned",
+      "mouth": "downturned"
+    },
+    "apologetic": {
+      "file": "expressions/apologetic.png",
+      "eyes": "closed",
+      "eyebrows": "concerned",
+      "mouth": "downturned"
+    }
+  },
+  "poses": {
+    "idle_pose": {
+      "file": "animations/poses/idle_pose.png"
+    },
+    "waving_pose": {
+      "file": "animations/poses/waving_pose.png"
+    },
+    "pointing_left": {
+      "file": "animations/poses/pointing_left.png"
+    },
+    "pointing_right": {
+      "file": "animations/poses/pointing_right.png"
+    },
+    "explaining_pose": {
+      "file": "animations/poses/explaining_pose.png"
+    },
+    "hands_together_welcome": {
+      "file": "animations/poses/hands_together_welcome.png"
+    },
+    "celebration_pose": {
+      "file": "animations/poses/celebration_pose.png"
+    }
+  },
+  "animations": {
+    "blink": {
+      "frames": [
+        {
+          "file": "animations/blink/frame_000.png",
+          "durationMs": 1000,
+          "parameters": {}
+        },
+        {
+          "file": "animations/blink/frame_001.png",
+          "durationMs": 60,
+          "parameters": {
+            "features": {
+              "eyes": "half_closed"
+            }
+          }
+        },
+        {
+          "file": "animations/blink/frame_002.png",
+          "durationMs": 90,
+          "parameters": {
+            "features": {
+              "eyes": "closed"
+            }
+          }
+        },
+        {
+          "file": "animations/blink/frame_003.png",
+          "durationMs": 60,
+          "parameters": {
+            "features": {
+              "eyes": "half_closed"
+            }
+          }
+        },
+        {
+          "file": "animations/blink/frame_004.png",
+          "durationMs": 800,
+          "parameters": {}
+        }
+      ],
+      "loop": true,
+      "atlas": {
+        "file": "animations/blink/atlas.png",
+        "width": 1280,
+        "height": 384,
+        "frameWidth": 256,
+        "frameHeight": 384,
+        "scaleFromMaster": 0.25,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 1000
+          },
+          {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 60
+          },
+          {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 60
+          },
+          {
+            "x": 1024,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 800
+          }
+        ]
+      }
+    },
+    "idle_loop": {
+      "frames": [
+        {
+          "file": "animations/idle_loop/frame_000.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0,
+            "headAngle": 0
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_001.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0.459,
+            "headAngle": 0.536
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_002.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0.849,
+            "headAngle": 0.99
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_003.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 1.109,
+            "headAngle": 1.293
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_004.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 1.2,
+            "headAngle": 1.4
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_005.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 1.109,
+            "headAngle": 1.293
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_006.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0.849,
+            "headAngle": 0.99
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_007.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0.459,
+            "headAngle": 0.536
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_008.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": 0,
+            "headAngle": 0
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_009.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -0.459,
+            "headAngle": -0.536
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_010.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -0.849,
+            "headAngle": -0.99
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_011.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -1.109,
+            "headAngle": -1.293
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_012.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -1.2,
+            "headAngle": -1.4
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_013.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -1.109,
+            "headAngle": -1.293
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_014.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -0.849,
+            "headAngle": -0.99
+          }
+        },
+        {
+          "file": "animations/idle_loop/frame_015.png",
+          "durationMs": 125,
+          "parameters": {
+            "headY": -0.459,
+            "headAngle": -0.536
+          }
+        }
+      ],
+      "loop": true,
+      "atlas": {
+        "file": "animations/idle_loop/atlas.png",
+        "width": 2048,
+        "height": 768,
+        "frameWidth": 256,
+        "frameHeight": 384,
+        "scaleFromMaster": 0.25,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1024,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1280,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1536,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1792,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 0,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 256,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 512,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 768,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1024,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1280,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1536,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          },
+          {
+            "x": 1792,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 125
+          }
+        ]
+      }
+    },
+    "talking": {
+      "frames": [
+        {
+          "file": "animations/talking/frame_000.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "closed"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_001.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "slight_open"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_002.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "medium_open"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_003.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "wide_open"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_004.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "medium_open"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_005.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "o_shape"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_006.png",
+          "durationMs": 100,
+          "parameters": {
+            "features": {
+              "mouth": "slight_open"
+            }
+          }
+        },
+        {
+          "file": "animations/talking/frame_007.png",
+          "durationMs": 180,
+          "parameters": {
+            "features": {
+              "mouth": "closed"
+            }
+          }
+        }
+      ],
+      "loop": true,
+      "mouthSet": [
+        {
+          "state": "closed",
+          "file": "animations/talking_mouth_set/mouth_closed.png"
+        },
+        {
+          "state": "slight_open",
+          "file": "animations/talking_mouth_set/mouth_slight_open.png"
+        },
+        {
+          "state": "medium_open",
+          "file": "animations/talking_mouth_set/mouth_medium_open.png"
+        },
+        {
+          "state": "wide_open",
+          "file": "animations/talking_mouth_set/mouth_wide_open.png"
+        },
+        {
+          "state": "smile",
+          "file": "animations/talking_mouth_set/mouth_smile.png"
+        },
+        {
+          "state": "o_shape",
+          "file": "animations/talking_mouth_set/mouth_o_shape.png"
+        },
+        {
+          "state": "downturned",
+          "file": "animations/talking_mouth_set/mouth_downturned.png"
+        }
+      ],
+      "atlas": {
+        "file": "animations/talking/atlas.png",
+        "width": 2048,
+        "height": 384,
+        "frameWidth": 256,
+        "frameHeight": 384,
+        "scaleFromMaster": 0.25,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1024,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1280,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1536,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1792,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 180
+          }
+        ]
+      }
+    },
+    "waving": {
+      "frames": [
+        {
+          "file": "animations/waving/frame_000.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -170,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_001.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -163,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_002.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -157,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_003.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -155,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_004.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -157,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_005.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -163,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_006.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -170,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_007.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -177,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_008.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -183,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_009.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -185,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_010.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -183,
+              "wave"
+            ]
+          }
+        },
+        {
+          "file": "animations/waving/frame_011.png",
+          "durationMs": 100,
+          "parameters": {
+            "expression": "happy",
+            "left": [
+              -30,
+              -178,
+              "wave"
+            ]
+          }
+        }
+      ],
+      "loop": true,
+      "atlas": {
+        "file": "animations/waving/atlas.png",
+        "width": 2048,
+        "height": 768,
+        "frameWidth": 256,
+        "frameHeight": 384,
+        "scaleFromMaster": 0.25,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1024,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1280,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1536,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 1792,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 0,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 256,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 512,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          },
+          {
+            "x": 768,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 100
+          }
+        ]
+      }
+    },
+    "nodding": {
+      "frames": [
+        {
+          "file": "animations/nodding/frame_000.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 0,
+            "headScaleY": 1
+          }
+        },
+        {
+          "file": "animations/nodding/frame_001.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 0,
+            "headScaleY": 0.9976554445662277
+          }
+        },
+        {
+          "file": "animations/nodding/frame_002.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 1,
+            "headScaleY": 0.99125
+          }
+        },
+        {
+          "file": "animations/nodding/frame_003.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 2,
+            "headScaleY": 0.9825
+          }
+        },
+        {
+          "file": "animations/nodding/frame_004.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 3,
+            "headScaleY": 0.97375
+          }
+        },
+        {
+          "file": "animations/nodding/frame_005.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 4,
+            "headScaleY": 0.9673445554337723
+          }
+        },
+        {
+          "file": "animations/nodding/frame_006.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 4,
+            "headScaleY": 0.965
+          }
+        },
+        {
+          "file": "animations/nodding/frame_007.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 4,
+            "headScaleY": 0.9673445554337723
+          }
+        },
+        {
+          "file": "animations/nodding/frame_008.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 3,
+            "headScaleY": 0.97375
+          }
+        },
+        {
+          "file": "animations/nodding/frame_009.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 2,
+            "headScaleY": 0.9825
+          }
+        },
+        {
+          "file": "animations/nodding/frame_010.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 1,
+            "headScaleY": 0.99125
+          }
+        },
+        {
+          "file": "animations/nodding/frame_011.png",
+          "durationMs": 90,
+          "parameters": {
+            "headY": 0,
+            "headScaleY": 0.9976554445662277
+          }
+        }
+      ],
+      "loop": false,
+      "atlas": {
+        "file": "animations/nodding/atlas.png",
+        "width": 2048,
+        "height": 768,
+        "frameWidth": 256,
+        "frameHeight": 384,
+        "scaleFromMaster": 0.25,
+        "frames": [
+          {
+            "x": 0,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 256,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 512,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 768,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 1024,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 1280,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 1536,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 1792,
+            "y": 0,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 0,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 256,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 512,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          },
+          {
+            "x": 768,
+            "y": 384,
+            "w": 256,
+            "h": 384,
+            "durationMs": 90
+          }
+        ]
+      }
+    }
+  },
+  "sources": [
+    {
+      "file": "meta/source/legs.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaBounds": {
+        "left": 392,
+        "top": 366,
+        "width": 527,
+        "height": 534
+      }
+    },
+    {
+      "file": "meta/source/torso.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 170,
+        "top": 252,
+        "width": 684,
+        "height": 1076
+      }
+    },
+    {
+      "file": "meta/source/hair_back.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaBounds": {
+        "left": 190,
+        "top": 170,
+        "width": 932,
+        "height": 880
+      }
+    },
+    {
+      "file": "meta/source/face_base.png",
+      "width": 1254,
+      "height": 1254,
+      "alphaBounds": {
+        "left": 177,
+        "top": 220,
+        "width": 900,
+        "height": 890
+      }
+    },
+    {
+      "file": "meta/source/bun.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 395,
+        "top": 171,
+        "width": 746,
+        "height": 634
+      }
+    },
+    {
+      "file": "meta/source/ribbon.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 261,
+        "top": 268,
+        "width": 1015,
+        "height": 562
+      }
+    },
+    {
+      "file": "meta/source/hair_front.png",
+      "width": 1254,
+      "height": 1254,
+      "alphaBounds": {
+        "left": 182,
+        "top": 329,
+        "width": 891,
+        "height": 648
+      }
+    },
+    {
+      "file": "meta/source/side_hair_right.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 708,
+        "top": 100,
+        "width": 121,
+        "height": 827
+      }
+    },
+    {
+      "file": "meta/source/side_hair_left.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 445,
+        "top": 318,
+        "width": 136,
+        "height": 909
+      }
+    },
+    {
+      "file": "meta/source/eyes_open.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 197,
+        "top": 355,
+        "width": 1141,
+        "height": 380
+      }
+    },
+    {
+      "file": "meta/source/eyes_half_closed.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 232,
+        "top": 456,
+        "width": 1073,
+        "height": 258
+      }
+    },
+    {
+      "file": "meta/source/eyes_closed.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 292,
+        "top": 501,
+        "width": 953,
+        "height": 113
+      }
+    },
+    {
+      "file": "meta/source/eyes_smiling.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 275,
+        "top": 448,
+        "width": 986,
+        "height": 140
+      }
+    },
+    {
+      "file": "meta/source/eyebrows_neutral.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 249,
+        "top": 450,
+        "width": 1039,
+        "height": 101
+      }
+    },
+    {
+      "file": "meta/source/eyebrows_happy.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 256,
+        "top": 450,
+        "width": 1024,
+        "height": 123
+      }
+    },
+    {
+      "file": "meta/source/eyebrows_concerned.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 264,
+        "top": 434,
+        "width": 1009,
+        "height": 154
+      }
+    },
+    {
+      "file": "meta/source/eyebrows_surprised.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 213,
+        "top": 410,
+        "width": 1109,
+        "height": 184
+      }
+    },
+    {
+      "file": "meta/source/mouth_closed.png",
+      "width": 1254,
+      "height": 1254,
+      "alphaBounds": {
+        "left": 449,
+        "top": 588,
+        "width": 356,
+        "height": 99
+      }
+    },
+    {
+      "file": "meta/source/mouth_slight_open.png",
+      "width": 2172,
+      "height": 724,
+      "alphaBounds": {
+        "left": 862,
+        "top": 318,
+        "width": 448,
+        "height": 177
+      }
+    },
+    {
+      "file": "meta/source/mouth_medium_open.png",
+      "width": 1315,
+      "height": 1197,
+      "alphaBounds": {
+        "left": 337,
+        "top": 403,
+        "width": 640,
+        "height": 333
+      }
+    },
+    {
+      "file": "meta/source/mouth_wide_open.png",
+      "width": 1315,
+      "height": 1196,
+      "alphaBounds": {
+        "left": 338,
+        "top": 403,
+        "width": 639,
+        "height": 414
+      }
+    },
+    {
+      "file": "meta/source/mouth_smile.png",
+      "width": 1263,
+      "height": 1246,
+      "alphaBounds": {
+        "left": 260,
+        "top": 534,
+        "width": 743,
+        "height": 296
+      }
+    },
+    {
+      "file": "meta/source/mouth_o_shape.png",
+      "width": 1254,
+      "height": 1254,
+      "alphaBounds": {
+        "left": 366,
+        "top": 354,
+        "width": 524,
+        "height": 683
+      }
+    },
+    {
+      "file": "meta/source/mouth_downturned.png",
+      "width": 1254,
+      "height": 1254,
+      "alphaBounds": {
+        "left": 432,
+        "top": 589,
+        "width": 390,
+        "height": 124
+      }
+    },
+    {
+      "file": "meta/source/arm_upper_left.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 372,
+        "top": 479,
+        "width": 280,
+        "height": 578
+      }
+    },
+    {
+      "file": "meta/source/forearm_left.png",
+      "width": 881,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 320,
+        "top": 479,
+        "width": 241,
+        "height": 578
+      }
+    },
+    {
+      "file": "meta/source/hand_left.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 311,
+        "top": 510,
+        "width": 376,
+        "height": 546
+      }
+    },
+    {
+      "file": "meta/source/arm_upper_right.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 372,
+        "top": 479,
+        "width": 280,
+        "height": 578
+      }
+    },
+    {
+      "file": "meta/source/forearm_right.png",
+      "width": 881,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 320,
+        "top": 479,
+        "width": 241,
+        "height": 578
+      }
+    },
+    {
+      "file": "meta/source/hand_right.png",
+      "width": 1024,
+      "height": 1536,
+      "alphaBounds": {
+        "left": 309,
+        "top": 506,
+        "width": 405,
+        "height": 596
+      }
+    },
+    {
+      "file": "meta/source/hand_wave.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 426,
+        "top": 183,
+        "width": 658,
+        "height": 655
+      }
+    },
+    {
+      "file": "meta/source/hand_point.png",
+      "width": 1312,
+      "height": 1199,
+      "alphaBounds": {
+        "left": 423,
+        "top": 233,
+        "width": 467,
+        "height": 760
+      }
+    },
+    {
+      "file": "meta/source/hands_welcome.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 307,
+        "top": 273,
+        "width": 922,
+        "height": 509
+      }
+    },
+    {
+      "file": "meta/source/joint_cover.png",
+      "width": 1536,
+      "height": 1024,
+      "alphaBounds": {
+        "left": 423,
+        "top": 159,
+        "width": 690,
+        "height": 706
+      }
+    },
+    {
+      "file": "meta/source/master_three_quarter.png",
+      "width": 1086,
+      "height": 1448,
+      "alphaBounds": {
+        "left": 110,
+        "top": 36,
+        "width": 789,
+        "height": 1383
+      }
+    }
+  ],
+  "palette": [
+    "#271015",
+    "#292229",
+    "#3C323D",
+    "#514653",
+    "#786B78",
+    "#E5182A",
+    "#C50C24",
+    "#8F1425",
+    "#FF3547",
+    "#F8CF32",
+    "#DCA922",
+    "#FFE777",
+    "#FFC9AC",
+    "#FFB492",
+    "#F19A7D",
+    "#FFDDC6",
+    "#FA9198",
+    "#FEB2A4",
+    "#FFFFFF",
+    "#7A2330",
+    "#BB5262"
+  ],
+  "rig": {
+    "head": {
+      "pivot": [
+        512,
+        748
+      ],
+      "rotationRange": [
+        -6,
+        6
+      ],
+      "scaleYRange": [
+        0.96,
+        1.02
+      ]
+    },
+    "torso": {
+      "pivot": [
+        512,
+        912
+      ]
+    },
+    "arms": {
+      "upperLength": 116,
+      "forearmLength": 104,
+      "overlap": 16
+    },
+    "leftRightConvention": "Anatomical: character left = screen right. pointing_left/right denote screen directions.",
+    "frameExport": "Rigid cutout transforms at 256x384, nearest-neighbor 4x export. No per-frame generative redraw."
+  },
+  "deliverables": {
+    "concept": 4,
+    "layers": 37,
+    "expressions": 6,
+    "poses": 7,
+    "animationClips": 5,
+    "animationFrames": 53,
+    "atlases": 5,
+    "mouths": 7
+  }
+}

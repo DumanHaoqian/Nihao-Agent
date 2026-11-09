@@ -1,0 +1,399 @@
+{
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "pixelGrid": 4,
+    "alpha": "binary"
+  },
+  "coordinateSystem": "top-left origin; x right; y down; left/right are character anatomical sides",
+  "anchors": {
+    "root": [
+      512,
+      1480
+    ],
+    "head": [
+      512,
+      748
+    ],
+    "neck": [
+      512,
+      748
+    ],
+    "torso": [
+      512,
+      912
+    ],
+    "shoulder_left": [
+      660,
+      884
+    ],
+    "shoulder_right": [
+      364,
+      884
+    ]
+  },
+  "layers": [
+    {
+      "id": "legs",
+      "pivot": [
+        512,
+        912
+      ],
+      "parent": "root",
+      "z": 5
+    },
+    {
+      "id": "torso",
+      "pivot": [
+        512,
+        912
+      ],
+      "parent": "root",
+      "z": 30
+    },
+    {
+      "id": "hair_back",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 31
+    },
+    {
+      "id": "face_base",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 40
+    },
+    {
+      "id": "bun",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 32
+    },
+    {
+      "id": "ribbon",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 51
+    },
+    {
+      "id": "hair_front",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 50
+    },
+    {
+      "id": "side_hair_right",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 52
+    },
+    {
+      "id": "side_hair_left",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 52
+    },
+    {
+      "id": "eyes_open",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 45
+    },
+    {
+      "id": "eyes_half_closed",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 45
+    },
+    {
+      "id": "eyes_closed",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 45
+    },
+    {
+      "id": "eyes_smiling",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 45
+    },
+    {
+      "id": "eyebrows_neutral",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 46
+    },
+    {
+      "id": "eyebrows_happy",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 46
+    },
+    {
+      "id": "eyebrows_concerned",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 46
+    },
+    {
+      "id": "eyebrows_surprised",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 46
+    },
+    {
+      "id": "mouth_closed",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_slight_open",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_medium_open",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_wide_open",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_smile",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_o_shape",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "mouth_downturned",
+      "pivot": [
+        512,
+        748
+      ],
+      "parent": "head",
+      "z": 47
+    },
+    {
+      "id": "arm_upper_left",
+      "pivot": [
+        660,
+        884
+      ],
+      "parent": "torso",
+      "z": 25
+    },
+    {
+      "id": "forearm_left",
+      "pivot": [
+        684,
+        997
+      ],
+      "parent": "arm_upper_left",
+      "z": 27
+    },
+    {
+      "id": "hand_left",
+      "pivot": [
+        713,
+        1097
+      ],
+      "parent": "forearm_left",
+      "z": 29
+    },
+    {
+      "id": "arm_upper_right",
+      "pivot": [
+        364,
+        884
+      ],
+      "parent": "torso",
+      "z": 25
+    },
+    {
+      "id": "forearm_right",
+      "pivot": [
+        340,
+        997
+      ],
+      "parent": "arm_upper_right",
+      "z": 27
+    },
+    {
+      "id": "hand_right",
+      "pivot": [
+        311,
+        1097
+      ],
+      "parent": "forearm_right",
+      "z": 29
+    },
+    {
+      "id": "hand_wave",
+      "pivot": [
+        512,
+        960
+      ],
+      "parent": "torso",
+      "z": 60
+    },
+    {
+      "id": "hand_point",
+      "pivot": [
+        512,
+        960
+      ],
+      "parent": "torso",
+      "z": 60
+    },
+    {
+      "id": "hands_welcome",
+      "pivot": [
+        512,
+        960
+      ],
+      "parent": "torso",
+      "z": 60
+    },
+    {
+      "id": "joint_elbow_left",
+      "pivot": [
+        684,
+        997
+      ],
+      "parent": "arm_upper_left",
+      "z": 29.5
+    },
+    {
+      "id": "joint_wrist_left",
+      "pivot": [
+        713,
+        1097
+      ],
+      "parent": "forearm_left",
+      "z": 29.5
+    },
+    {
+      "id": "joint_elbow_right",
+      "pivot": [
+        340,
+        997
+      ],
+      "parent": "arm_upper_right",
+      "z": 29.5
+    },
+    {
+      "id": "joint_wrist_right",
+      "pivot": [
+        311,
+        1097
+      ],
+      "parent": "forearm_right",
+      "z": 29.5
+    }
+  ],
+  "rig": {
+    "head": {
+      "pivot": [
+        512,
+        748
+      ],
+      "rotationRange": [
+        -6,
+        6
+      ],
+      "scaleYRange": [
+        0.96,
+        1.02
+      ]
+    },
+    "torso": {
+      "pivot": [
+        512,
+        912
+      ]
+    },
+    "arms": {
+      "upperLength": 116,
+      "forearmLength": 104,
+      "overlap": 16
+    },
+    "leftRightConvention": "Anatomical: character left = screen right. pointing_left/right denote screen directions.",
+    "frameExport": "Rigid cutout transforms at 256x384, nearest-neighbor 4x export. No per-frame generative redraw."
+  }
+}

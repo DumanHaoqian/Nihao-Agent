@@ -1,0 +1,221 @@
+{
+  "upstream": "deepseek-ai/deepseek-harness",
+  "version": "0.2.2-rc.1",
+  "packages": [
+    {
+      "name": "@deepseek-ai/cordis",
+      "path": "vendor/cordis",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/cordis-plugin-group",
+      "path": "vendor/group",
+      "reason": "dependency/peer of @deepseek-ai/dsh-app-boot"
+    },
+    {
+      "name": "@deepseek-ai/cordis-plugin-include",
+      "path": "vendor/include",
+      "reason": "dependency/peer of @deepseek-ai/cordis"
+    },
+    {
+      "name": "@deepseek-ai/cordis-plugin-loader",
+      "path": "vendor/loader",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/cordis-plugin-timer",
+      "path": "vendor/timer",
+      "reason": "dependency/peer of @deepseek-ai/dsh-hmr"
+    },
+    {
+      "name": "@deepseek-ai/cosmokit",
+      "path": "vendor/cosmokit",
+      "reason": "dependency/peer of @deepseek-ai/cordis"
+    },
+    {
+      "name": "@deepseek-ai/dsh-agent",
+      "path": "packages/core/agent",
+      "reason": "dependency/peer of @deepseek-ai/dsh-tools"
+    },
+    {
+      "name": "@deepseek-ai/dsh-agent-loop",
+      "path": "packages/core/agent-loop",
+      "reason": "runtime seed"
+    },
+    {
+      "name": "@deepseek-ai/dsh-app-boot",
+      "path": "packages/boot/app-boot",
+      "reason": "source import in packages/settings/settings/src/index.ts"
+    },
+    {
+      "name": "@deepseek-ai/dsh-atomic-write",
+      "path": "packages/util/atomic-write",
+      "reason": "dependency/peer of @deepseek-ai/dsh-app-boot"
+    },
+    {
+      "name": "@deepseek-ai/dsh-attachment",
+      "path": "packages/attachment/attachment",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-authorization",
+      "path": "packages/credentials/authorization",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-brand",
+      "path": "packages/util/brand",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-cmdline",
+      "path": "packages/boot/cmdline",
+      "reason": "dependency/peer of @deepseek-ai/dsh-hmr"
+    },
+    {
+      "name": "@deepseek-ai/dsh-config-editor",
+      "path": "packages/boot/config-editor",
+      "reason": "dependency/peer of @deepseek-ai/dsh-settings"
+    },
+    {
+      "name": "@deepseek-ai/dsh-credentials",
+      "path": "packages/credentials/credentials",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-fs",
+      "path": "packages/fs/fs",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-fs-patch",
+      "path": "packages/fs/fs-patch",
+      "reason": "dependency/peer of @deepseek-ai/dsh-fs"
+    },
+    {
+      "name": "@deepseek-ai/dsh-hmr",
+      "path": "packages/boot/hmr",
+      "reason": "dependency/peer of @deepseek-ai/dsh-config-editor"
+    },
+    {
+      "name": "@deepseek-ai/dsh-home-paths",
+      "path": "packages/util/home-paths",
+      "reason": "dependency/peer of @deepseek-ai/dsh-app-boot"
+    },
+    {
+      "name": "@deepseek-ai/dsh-launch-environment",
+      "path": "packages/util/launch-environment",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-llm",
+      "path": "packages/llm/llm",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-llm-pi-ai",
+      "path": "packages/llm/llm-pi-ai",
+      "reason": "runtime seed"
+    },
+    {
+      "name": "@deepseek-ai/dsh-official-bundles",
+      "path": "packages/util/official-bundles",
+      "reason": "dependency/peer of @deepseek-ai/dsh-app-boot"
+    },
+    {
+      "name": "@deepseek-ai/dsh-package-manifest",
+      "path": "packages/util/package-manifest",
+      "reason": "source import in packages/llm/llm/src/types.ts"
+    },
+    {
+      "name": "@deepseek-ai/dsh-sandbox",
+      "path": "packages/sandbox/sandbox",
+      "reason": "dependency/peer of @deepseek-ai/dsh-fs"
+    },
+    {
+      "name": "@deepseek-ai/dsh-scope",
+      "path": "packages/core/scope",
+      "reason": "dependency/peer of @deepseek-ai/dsh-session"
+    },
+    {
+      "name": "@deepseek-ai/dsh-session",
+      "path": "packages/core/session",
+      "reason": "dependency/peer of @deepseek-ai/dsh-sandbox"
+    },
+    {
+      "name": "@deepseek-ai/dsh-session-persistence",
+      "path": "packages/session/session-persistence",
+      "reason": "dependency/peer of @deepseek-ai/dsh-workspace"
+    },
+    {
+      "name": "@deepseek-ai/dsh-session-projection",
+      "path": "packages/session/session-projection",
+      "reason": "dependency/peer of @deepseek-ai/dsh-user-approval"
+    },
+    {
+      "name": "@deepseek-ai/dsh-settings",
+      "path": "packages/settings/settings",
+      "reason": "source import in packages/llm/llm-pi-ai/src/index.ts"
+    },
+    {
+      "name": "@deepseek-ai/dsh-storage",
+      "path": "packages/storage/storage",
+      "reason": "dependency/peer of @deepseek-ai/dsh-workspace"
+    },
+    {
+      "name": "@deepseek-ai/dsh-storage-domain",
+      "path": "packages/storage/storage-domain",
+      "reason": "dependency/peer of @deepseek-ai/dsh-workspace"
+    },
+    {
+      "name": "@deepseek-ai/dsh-system-prompt",
+      "path": "packages/core/system-prompt",
+      "reason": "runtime seed"
+    },
+    {
+      "name": "@deepseek-ai/dsh-timeout",
+      "path": "packages/util/timeout",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-tool-executor-native",
+      "path": "packages/core/tool-executor-native",
+      "reason": "runtime seed"
+    },
+    {
+      "name": "@deepseek-ai/dsh-tools",
+      "path": "packages/core/tools",
+      "reason": "dependency/peer of @deepseek-ai/dsh-tool-executor-native"
+    },
+    {
+      "name": "@deepseek-ai/dsh-typert-protocol",
+      "path": "packages/typert/protocol",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm"
+    },
+    {
+      "name": "@deepseek-ai/dsh-user-approval",
+      "path": "packages/interaction/user-approval",
+      "reason": "dependency/peer of @deepseek-ai/dsh-tools"
+    },
+    {
+      "name": "@deepseek-ai/dsh-util-crypto",
+      "path": "packages/util/crypto",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm"
+    },
+    {
+      "name": "@deepseek-ai/dsh-util-values",
+      "path": "packages/util/values",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    },
+    {
+      "name": "@deepseek-ai/dsh-workspace",
+      "path": "packages/workspace/workspace",
+      "reason": "dependency/peer of @deepseek-ai/dsh-agent"
+    },
+    {
+      "name": "@deepseek-ai/schemastery",
+      "path": "vendor/schemastery",
+      "reason": "dependency/peer of @deepseek-ai/dsh-llm-pi-ai"
+    }
+  ]
+}
