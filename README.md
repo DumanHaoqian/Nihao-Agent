@@ -6,6 +6,16 @@ This directory is the repository and application root. The separate Python knowl
 
 ## Run locally
 
+On macOS, double-click **`setup.command`**, fill in the three API keys in `.env`, then double-click **`start.command`**. The setup installs a project-local Node 24.22.2 runtime, installs locked dependencies and builds the app. It preserves existing `.env` values and does not depend on Conda or system Node. macOS/Linux terminal equivalent:
+
+```sh
+bash scripts/setup-env.sh
+# Fill in .env, then:
+bash scripts/run.sh start
+```
+
+See [新电脑一键配置指南](docs/setup-new-computer.md). Re-run setup after updating code; use `bash scripts/run.sh check` to check configuration. The manual npm workflow below remains available.
+
 Requires Node.js 24.9 or newer. Clone the repository, then run commands from its root:
 
 ```sh
@@ -95,6 +105,8 @@ npm run test:ui
 npm run test:markdown:ui
 npm run test:avatar:ui
 ```
+
+After the isolated environment setup, `npm run test:env` checks the launcher against an old system Node, paths containing spaces, repeated setup, preserved API configuration and installation failures. It starts the real local server with fixture keys without contacting providers. Bootstrap installation has been exercised on macOS arm64; Linux and Intel macOS branches are provided but have not been run on those platforms here.
 
 Unit tests exercise the actual Harness loop using an explicitly injected test adapter, plus image validation and HTTP/SSE failure and cancellation behavior. Speech tests cover the Doubao binary protocols against local WebSocket servers, streamed audio/transcripts, final-packet handling and request cancellation, PCM decoding/resampling, and playback completion. UI tests use mocked provider responses and consume no provider credits. Image tests exercise browser decoding, upload history and preview controls; speech tests cover read aloud, cancellation and replay. `scripts/test-dictation-ui.mjs` drives an actual browser microphone/AudioWorklet pipeline using a generated test audio device and checks draft updates, finishing, cancellation, permission handling and localized errors. They use installed Google Chrome on macOS or Playwright Chromium (`npx playwright install chromium`) elsewhere. Real Poe and Doubao calls require valid provider credentials and are separate from these deterministic tests.
 

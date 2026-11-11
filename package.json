@@ -23,7 +23,8 @@
     "test:ui": "node scripts/test-ui.mjs && node scripts/test-images-ui.mjs && node scripts/test-speech-ui.mjs && node scripts/test-dictation-ui.mjs",
     "prepare:avatar": "node scripts/prepare-avatar.mjs",
     "test:avatar:ui": "node scripts/test-avatar-ui.mjs",
-    "test:markdown:ui": "node scripts/test-markdown-ui.mjs"
+    "test:markdown:ui": "node scripts/test-markdown-ui.mjs",
+    "test:env": "node scripts/test-node-env.mjs"
   },
   "dependencies": {
     "@babel/code-frame": "^7.29.0",
