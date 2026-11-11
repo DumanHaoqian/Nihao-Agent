@@ -15,6 +15,7 @@ const MIME: Record<string, string> = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png',
   '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.webp': 'image/webp',
+  '.json': 'application/json; charset=utf-8',
 }
 
 function json(response: ServerResponse, status: number, value: unknown): void {
@@ -80,8 +81,9 @@ async function serveClient(pathname: string, request: IncomingMessage, response:
   response.writeHead(200, {
     'Content-Type': MIME[extname(filename)]!,
     'Content-Length': content.length,
-    'Cache-Control': extname(filename) === '.html' ? 'no-cache' : 'public, max-age=3600',
-    'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
+    'Cache-Control': ['.html', '.json'].includes(extname(filename)) ? 'no-cache' : 'public, max-age=3600',
+    // KaTeX uses computed style attributes for formula layout; scripts and style sheets remain self-only.
+    'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'",
   })
   response.end(request.method === 'HEAD' ? undefined : content)
 }

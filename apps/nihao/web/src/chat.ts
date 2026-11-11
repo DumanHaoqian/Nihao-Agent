@@ -13,7 +13,7 @@ export interface ChatImage {
   dataUrl: string;
 }
 
-/** User turns may include images; assistant replies remain plain text. */
+/** User turns may include images; assistant strings preserve their original Markdown. */
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;

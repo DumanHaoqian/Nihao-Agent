@@ -5,6 +5,7 @@ import { readConfig } from './config.ts'
 import { createHarnessRunner, type ChatRunner } from './harness.ts'
 import { createNihaoServer } from './http.ts'
 import { ChatError, parseChatRequest } from './protocol.ts'
+import { resolve } from 'node:path'
 
 const config = { ...readConfig({}), configured: true }
 
@@ -94,6 +95,23 @@ async function start(run: ChatRunner, overrides: Partial<typeof config> = {}) {
 
 const payload = { messages: [{ role: 'user', content: 'Hello' }] }
 const headers = { 'Content-Type': 'application/json' }
+
+test('production static server serves avatar JSON and PNG from public while rejecting private paths', async () => {
+  const app = await start(async () => {}, { clientDirectory: resolve('apps/nihao/web/public') })
+  try {
+    const manifest = await fetch(`${app.url}/avatar/nihao-v1/manifest.json`)
+    assert.equal(manifest.status, 200)
+    assert.match(manifest.headers.get('content-type') || '', /application\/json/)
+    assert.equal(manifest.headers.get('cache-control'), 'no-cache')
+    const data = await manifest.json()
+    assert.equal(data.framings.portrait.width, 128)
+    assert.equal(data.framings.bust.height, 256)
+    const image = await fetch(`${app.url}/avatar/nihao-v1/${data.framings.portrait.static}`)
+    assert.equal(image.status, 200)
+    assert.equal(image.headers.get('content-type'), 'image/png')
+    for (const path of ['/.env', '/%2ehidden/config.json', '/package.json']) assert.equal((await fetch(`${app.url}${path}`)).status, 404)
+  } finally { await app.shutdown() }
+})
 
 test('HTTP emits a text delta before the provider finishes, then emits done', async () => {
   const gate = Promise.withResolvers<void>()

@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { SpeechError, StreamingPcmPlayer, streamSpeech } from './speech.ts';
 
 export interface SpeechState {
   messageId?: string;
+  sessionId?: string;
   status: 'idle' | 'loading' | 'playing' | 'complete' | 'error';
   errorCode?: string;
 }
@@ -22,6 +23,7 @@ export function useSpeech() {
   const [replayId, setReplayId] = useState<string>();
   const active = useRef<Playback | undefined>(undefined);
   const cache = useRef<CachedSpeech | undefined>(undefined);
+  const readLevel = useCallback(() => active.current?.player.readLevel() ?? 0, []);
 
   function cancelActive(): void {
     const playback = active.current;
@@ -50,7 +52,8 @@ export function useSpeech() {
 
   function play(messageId: string, text: string): void {
     cancelActive();
-    setState({ messageId, status: 'loading' });
+    const sessionId = crypto.randomUUID();
+    setState({ messageId, sessionId, status: 'loading' });
     let context: AudioContext;
     let resume: Promise<void>;
     try {
@@ -60,10 +63,18 @@ export function useSpeech() {
       context = new BrowserAudioContext();
       resume = context.resume();
     } catch {
-      setState({ messageId, status: 'error', errorCode: 'SPEECH_UNSUPPORTED' });
+      setState({ messageId, sessionId, status: 'error', errorCode: 'SPEECH_UNSUPPORTED' });
       return;
     }
-    const playback: Playback = { context, controller: new AbortController(), player: new StreamingPcmPlayer(context) };
+    let player: StreamingPcmPlayer;
+    try { player = new StreamingPcmPlayer(context); }
+    catch {
+      void resume.catch(() => undefined);
+      void context.close().catch(() => undefined);
+      setState({ messageId, sessionId, status: 'error', errorCode: 'SPEECH_UNSUPPORTED' });
+      return;
+    }
+    const playback: Playback = { context, controller: new AbortController(), player };
     active.current = playback;
 
     void (async () => {
@@ -80,13 +91,13 @@ export function useSpeech() {
         const cached = cache.current;
         if (cached?.messageId === messageId && cached.text === text) {
           for (const bytes of cached.chunks) playback.player.enqueue(bytes);
-          setState({ messageId, status: 'playing' });
+          setState({ messageId, sessionId, status: 'playing' });
         } else {
           let cachedBytes = 0;
           let chunks: Uint8Array[] | undefined = [];
           await streamSpeech(text, playback.controller.signal, bytes => {
             if (active.current !== playback) return;
-            if (playback.player.enqueue(bytes)) setState(current => current.status === 'playing' ? current : { messageId, status: 'playing' });
+            if (playback.player.enqueue(bytes)) setState(current => current.sessionId === sessionId && current.status === 'playing' ? current : { messageId, sessionId, status: 'playing' });
             cachedBytes += bytes.length;
             if (cachedBytes <= MAX_CACHE_BYTES) chunks?.push(bytes);
             else chunks = undefined;
@@ -100,11 +111,11 @@ export function useSpeech() {
             cache.current = nextCache;
             setReplayId(messageId);
           }
-          setState({ messageId, status: 'complete' });
+          setState({ messageId, sessionId, status: 'complete' });
         }
       } catch (error) {
         if (active.current === playback && !playback.controller.signal.aborted) {
-          setState({ messageId, status: 'error', errorCode: error instanceof SpeechError ? error.code : 'SPEECH_UNAVAILABLE' });
+          setState({ messageId, sessionId, status: 'error', errorCode: error instanceof SpeechError ? error.code : 'SPEECH_UNAVAILABLE' });
         }
       } finally {
         clearTimeout(resumeTimer);
@@ -115,5 +126,5 @@ export function useSpeech() {
     })();
   }
 
-  return { state, replayId, play, stop, reset };
+  return { state, replayId, play, stop, reset, readLevel };
 }

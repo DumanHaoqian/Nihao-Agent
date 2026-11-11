@@ -17,21 +17,22 @@ For the existing local checkout, use `cd /Users/haoqian3/Desktop/Nihao-Agent` di
 
 ```sh
 npm install
-npm run env:check
+npm run env:check:local
 npm run build
 npm run start:local
 ```
 
-Open **http://127.0.0.1:8787**. The local launcher loads your existing zsh configuration and invokes the `poe`, `doubao` and `baidumap` aliases or functions when the corresponding variables are missing. They export `POE_API_KEY` for chat, `DOUBAO_API_KEY` for dictation/read aloud, and `BAIDU_MAP_API_KEY` for maps. Enable both streaming ASR 2.0 and TTS 2.0 in the key's Doubao project. The Baidu key must be a server-type AK with MCP service access. Values already present in the environment take priority. `npm run env:check` reports only whether each variable is loaded; it does not print the values or verify provider authorization. Credentials are not stored in this repository.
+Open **http://127.0.0.1:8787**. The local launcher loads your existing zsh configuration and invokes the `poe`, `doubao` and `baidumap` aliases or functions when the corresponding variables are missing. They export `POE_API_KEY` for chat, `DOUBAO_API_KEY` for dictation/read aloud, and `BAIDU_MAP_API_KEY` for maps. Enable both streaming ASR 2.0 and TTS 2.0 in the key's Doubao project. The Baidu key must be a server-type AK with MCP service access. Values already present in the environment take priority. `npm run env:check:local` reports only whether each variable is loaded; it does not print the values or verify provider authorization. Credentials are not stored in this repository.
 
-On another machine, supply these environment variables through your normal secret-management mechanism and use `npm start`, which inherits exported variables without loading shell shortcuts. `.env.example` documents optional configuration; the app does not automatically load `.env` files. Restart the server after changing credentials.
+On another machine, copy `.env.example` to `.env`, fill in `POE_API_KEY`, `BAIDU_MAP_API_KEY` and `DOUBAO_API_KEY`, then run `npm run env:check`, `npm run build` and `npm start`. These commands work without zsh or shell aliases. `npm start` and `npm run dev` automatically load the root `.env`; exported environment variables take priority. The file is ignored by Git. The check prints presence only and exits nonzero for missing keys; it does not call providers. Restart after changing credentials. See [新电脑配置指南](docs/setup-new-computer.md).
 
 For development, run `npm run dev:local` to load the same local shortcuts, or `npm run dev` with variables already exported. Open **http://127.0.0.1:5173**; Vite forwards `/api` to port 8787. Launchers enable Node's environment-proxy support for Poe; the Doubao WebSocket adapter separately respects `HTTPS_PROXY`/`HTTP_PROXY` and `NO_PROXY`.
 
 ## Current behavior
 
 - English/中文 interface with a screenshot-inspired landing page and mobile layout.
-- Plain-text conversation, real incremental replies, multi-turn context, stop, retry, copy and new chat.
+- A pixel-art travel companion waves once on welcome, reacts to actual chat/map/dictation states, and animates only the selected reply. Read-aloud mouth movement follows actual output volume, including silent gaps and cached replay. Historical avatars stay static; reduced-motion and image fallback are supported. See [character runtime](docs/avatar-runtime.md).
+- Markdown replies with bold, italics, lists, tables, code blocks and KaTeX formulas; real incremental replies, multi-turn context, stop, retry, copy and new chat.
 - Upload or paste JPEG, PNG and WebP images, preview/remove them before sending, or send an image without text. Click a sent image to enlarge it. Completed image messages remain available to follow-up questions.
 - Read aloud, stop and replay assistant replies. Doubao TTS 2.0 uses **Vivi 2.0** (`zh_female_vv_uranus_bigtts`) by default. Audio begins playing as PCM blocks arrive, before the entire reply has been synthesized. Playback starts only after clicking Read aloud.
 - Click the microphone beside Send for Chinese/English voice input. Allow microphone access, speak, then click the checkmark to finish. Recognition updates the draft while you speak; you can edit it before sending. The cancel button or Escape restores the draft from before recording. Recordings are limited to two minutes, with a live volume display and timer.
@@ -91,6 +92,8 @@ npm test
 npm run build
 # With the app running:
 npm run test:ui
+npm run test:markdown:ui
+npm run test:avatar:ui
 ```
 
 Unit tests exercise the actual Harness loop using an explicitly injected test adapter, plus image validation and HTTP/SSE failure and cancellation behavior. Speech tests cover the Doubao binary protocols against local WebSocket servers, streamed audio/transcripts, final-packet handling and request cancellation, PCM decoding/resampling, and playback completion. UI tests use mocked provider responses and consume no provider credits. Image tests exercise browser decoding, upload history and preview controls; speech tests cover read aloud, cancellation and replay. `scripts/test-dictation-ui.mjs` drives an actual browser microphone/AudioWorklet pipeline using a generated test audio device and checks draft updates, finishing, cancellation, permission handling and localized errors. They use installed Google Chrome on macOS or Playwright Chromium (`npx playwright install chromium`) elsewhere. Real Poe and Doubao calls require valid provider credentials and are separate from these deterministic tests.
@@ -123,6 +126,6 @@ Dependencies, build output, Python environments, downloaded knowledge data and g
 
 ## Credits
 
-Based on [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness), under its MIT license. Original notices are preserved in `LICENSE` and `THIRD_PARTY_NOTICES.md`. The interface follows the user's DeepSeek screenshot with Nihao branding and travel copy. Design review used [unslop](https://github.com/heydamir/unslop), by Damir Sokolovsky, under CC BY 4.0. Poe integration follows the [official compatible API documentation](https://creator.poe.com/docs/external-applications/openai-compatible-api). Read aloud follows the [Doubao bidirectional streaming TTS API](https://docs.volcengine.com/docs/doubao-voice/bidirectional-streaming-text-to-speech-websocket?lang=zh) and the protocol helpers supplied by the user; the runtime implements the protocol in TypeScript and does not require Python.
+Based on [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness), under its MIT license. Original notices are preserved in `LICENSE` and `THIRD_PARTY_NOTICES.md`. Markdown renderer dependency licenses are included in [markdown-notices.txt](apps/nihao/web/public/markdown-notices.txt). The interface follows the user's DeepSeek screenshot with Nihao branding and travel copy. Design review used [unslop](https://github.com/heydamir/unslop), by Damir Sokolovsky, under CC BY 4.0. Poe integration follows the [official compatible API documentation](https://creator.poe.com/docs/external-applications/openai-compatible-api). Read aloud follows the [Doubao bidirectional streaming TTS API](https://docs.volcengine.com/docs/doubao-voice/bidirectional-streaming-text-to-speech-websocket?lang=zh) and the protocol helpers supplied by the user; the runtime implements the protocol in TypeScript and does not require Python.
 
 Dictation follows the [Doubao real-time recognition API](https://docs.volcengine.com/docs/doubao-voice/bidirectional-streaming-automatic-speech-recognition-websocket?lang=zh) and the user-supplied `sauc_python` wire protocol. Only protocol framing is implemented in the app; the demo's disk logging and file conversion helpers are not used.

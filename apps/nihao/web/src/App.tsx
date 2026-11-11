@@ -11,6 +11,9 @@ import { useSpeech } from './useSpeech.ts';
 import { useDictation } from './useDictation.ts';
 import type { TravelArtifact } from '../../shared/travel.ts';
 import { mergeTravelArtifact } from './travel.ts';
+import { NihaoAvatar } from './components/NihaoAvatar.tsx';
+import { useAvatarState } from './avatar/useAvatarState.ts';
+import { avatarForMessage, hasTravelResult } from './avatar/controller.ts';
 
 /** Include only completed exchanges, so failed or cancelled output is never context. */
 function completedTranscript(messages: DisplayMessage[]): ChatMessage[] {
@@ -35,6 +38,7 @@ export function App() {
   const dictation = useDictation(setDraft, speech.stop);
   const [messages, setMessages] = useState<DisplayMessage[]>([]);
   const [pending, setPending] = useState(false);
+  const [avatarEpoch, setAvatarEpoch] = useState(0);
   const [awayFromBottom, setAwayFromBottom] = useState(false);
   const active = useRef<{ controller: AbortController; id: string } | undefined>(undefined);
   const travelSession = useRef<string | undefined>(undefined);
@@ -42,6 +46,12 @@ export function App() {
   const follow = useRef(true);
   const text = copy[locale];
   const hasConversation = messages.length > 0;
+  const latestReply = messages.findLast(message => message.role === 'assistant');
+  const avatar = useAvatarState({
+    epoch: avatarEpoch, welcome: !hasConversation,
+    chat: latestReply && { id: latestReply.id, status: latestReply.status, hasText: Boolean(latestReply.content), toolRunning: latestReply.toolStatus?.status === 'running', hasArtifacts: hasTravelResult(latestReply.travel) },
+    speech: speech.state, dictation: dictation.state,
+  });
 
   useEffect(() => {
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
@@ -57,6 +67,18 @@ export function App() {
   useLayoutEffect(() => {
     if (follow.current && conversation.current) conversation.current.scrollTop = conversation.current.scrollHeight;
   }, [messages]);
+
+  useLayoutEffect(() => {
+    const scroller = conversation.current;
+    const content = scroller?.firstElementChild;
+    if (!scroller || !content) return;
+    // Lazy Markdown and math fonts can change height after the streaming render.
+    const observer = new ResizeObserver(() => {
+      if (follow.current) scroller.scrollTop = scroller.scrollHeight;
+    });
+    observer.observe(content);
+    return () => observer.disconnect();
+  }, [hasConversation]);
 
   async function run(history: ChatMessage[], nextMessages: DisplayMessage[]) {
     if (active.current) return;
@@ -137,6 +159,7 @@ export function App() {
   }
 
   function newChat() {
+    setAvatarEpoch(epoch => epoch + 1);
     dictation.cancel(false);
     speech.reset();
     active.current?.controller.abort();
@@ -197,10 +220,11 @@ export function App() {
             }}
           >
             <div className="conversation" role="log" aria-live="off" aria-label={text.brand}>
-              {messages.map((message, index) => <Message key={message.id} message={message} locale={locale} canRetry={!pending && index === messages.length - 1} onRetry={retry} speechState={speech.state.messageId === message.id ? speech.state : undefined} canReplay={speech.replayId === message.id} onSpeak={() => { dictation.cancel(); speech.play(message.id, message.content); }} onStopSpeech={speech.stop} />)}
+              {messages.map((message, index) => <Message key={message.id} message={message} locale={locale} canRetry={!pending && index === messages.length - 1} onRetry={retry} speechState={speech.state.messageId === message.id ? speech.state : undefined} canReplay={speech.replayId === message.id} onSpeak={spokenText => { dictation.cancel(); speech.play(message.id, spokenText); }} onStopSpeech={speech.stop} avatar={avatarForMessage(avatar, message.id)} readLevel={speech.readLevel} />)}
             </div>
           </div>
           <div className="chat-composer-wrap">
+            {avatar.target === 'input' && <div className="avatar-listening"><NihaoAvatar state={avatar} label={text.avatarLabel} /><span>{dictation.state.errorCode ? text.avatarVoiceIssue : dictation.state.status === 'recording' ? text.voiceListening : dictation.state.status === 'permission' ? text.voicePermission : dictation.state.status === 'finishing' ? text.voiceFinishing : text.voiceConnecting}</span></div>}
             {awayFromBottom && <button type="button" className="jump-button" aria-label={text.scrollToBottom} title={text.scrollToBottom} onClick={jumpToBottom}><ArrowDown size={18} strokeWidth={1.5} /></button>}
             <Composer {...composer} />
             <p className="disclaimer">{text.disclaimer}</p>
@@ -213,6 +237,7 @@ export function App() {
               <p className="welcome-tagline">{text.tagline}</p>
               <p className="welcome-description">{text.description}</p>
             </div>
+            <div className="welcome-avatar"><NihaoAvatar framing="bust" state={avatar} label={text.avatarLabel} /></div>
             <h1 id="welcome-heading">{text.heading}</h1>
             <Composer {...composer} />
             <div className="prompt-starters">

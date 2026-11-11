@@ -89,7 +89,7 @@ function ItineraryCard({ itinerary, locale }: { itinerary: Itinerary; locale: Lo
   </section>;
 }
 
-/** Only completed, validated server artifacts render here; model text remains plain text. */
+/** Only completed, validated server artifacts render here, separately from reply Markdown. */
 export function TravelArtifacts({ artifacts, locale }: { artifacts: TravelArtifact[]; locale: Locale }) {
   const text = copy[locale];
   const plan = artifacts.find(artifact => artifact.kind === 'itinerary');
@@ -101,7 +101,7 @@ export function TravelArtifacts({ artifacts, locale }: { artifacts: TravelArtifa
       <summary><RouteIcon size={16} strokeWidth={1.5} /><span>{text.travelRoutes}</span><span className="travel-count">{routes.routes.length}</span></summary>
       <div className="travel-results-content">{routes.routes.map(route => <RouteSummary key={route.id} route={route} locale={locale} />)}</div>
     </details>}
-    {places?.kind === 'places' && places.places.length > 0 && <details className="travel-results">
+    {places?.kind === 'places' && places.places.length > 0 && <details className="travel-results" open>
       <summary><MapPin size={16} strokeWidth={1.5} /><span>{text.travelPlaces}</span><span className="travel-count">{places.places.length}</span></summary>
       <div className="travel-results-content">{places.places.map(place => <PlaceInfo key={place.id} place={place} locale={locale} />)}</div>
     </details>}

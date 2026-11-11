@@ -12,6 +12,10 @@
 
 素材包采用 PNG 分层与序列帧，尚不是完成绑定的 Live2D Cubism 工程。动画接入设计见 [动画接入方案](../docs/avatar-integration-plan.md)，素材结构与规格见 [素材包说明](avatar/nihao-avatar-pack-v1/README.md)。普通网页构建不会重建或预载整个素材包。
 
+## 网页运行资源
+
+角色现已通过 React + Canvas 2D 接入网页。运行实现见 [avatar-runtime.md](../docs/avatar-runtime.md)。在项目根目录运行 `npm run prepare:avatar`，会从现有素材确定性导出固定 portrait / bust / full 裁切、分层与小图集到 `apps/nihao/web/public/avatar/nihao-v1/`。这一步只需要已有的 `sharp`，不运行下方的原始美术包重建流程，也不重新生成角色。网页只发布这些精简资源，原始图、提示词和制作 QA 继续留在本目录。
+
 ## 本地预览
 
 ```sh

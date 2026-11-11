@@ -106,8 +106,11 @@ try {
   await freshReply();
   mode = 'loading';
   await page.getByRole('button', { name: 'Read aloud', exact: true }).click();
+  await page.locator('.nihao-avatar[data-activity="waiting"]').waitFor();
+  assert.equal(await page.locator('.nihao-avatar canvas').getAttribute('data-mouth'), 'closed');
   await page.getByRole('button', { name: 'Stop reading', exact: true }).click();
   await page.getByRole('button', { name: 'Read aloud', exact: true }).waitFor();
+  assert.equal(await page.locator('.message--assistant canvas').count(), 0);
 
   mode = 'pending';
   const before = await page.evaluate(() => window.__nihaoAudio.starts);
@@ -126,6 +129,7 @@ try {
   assert.equal(await page.getByRole('button', { name: 'Stop reading', exact: true }).count(), 1);
   await page.getByRole('button', { name: 'New chat', exact: true }).click();
   assert.equal(await page.getByRole('button', { name: 'Stop reading', exact: true }).count(), 0);
+  assert.equal(await page.locator('[data-activity="speaking"]').count(), 0);
 
   mode = 'auth';
   await reply();

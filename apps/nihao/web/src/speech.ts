@@ -142,13 +142,44 @@ export class Pcm16Decoder {
 export class StreamingPcmPlayer {
   private readonly decoder = new Pcm16Decoder();
   private readonly sources = new Set<AudioBufferSourceNode>();
+  private readonly scheduled = new Map<AudioBufferSourceNode, { start: number; end: number }>();
+  private readonly analyser: AnalyserNode;
+  private readonly samples = new Float32Array(512);
+  private disconnected = false;
   private nextStart = 0;
   private stopped = false;
   private finished = false;
   private resolveFinished: (() => void) | undefined;
   private rejectFinished: ((reason: unknown) => void) | undefined;
 
-  constructor(private readonly context: AudioContext) {}
+  constructor(private readonly context: AudioContext) {
+    this.analyser = context.createAnalyser();
+    this.analyser.fftSize = this.samples.length;
+    this.analyser.smoothingTimeConstant = 0;
+    this.analyser.connect(context.destination);
+  }
+
+  /** Read actual output samples, with explicit silence outside scheduled playback. */
+  readLevel(): number {
+    if (this.stopped || this.disconnected || this.context.state !== 'running') return 0;
+    const now = this.context.currentTime;
+    let audible = false;
+    for (const range of this.scheduled.values()) {
+      if (now >= range.start && now < range.end) { audible = true; break; }
+    }
+    if (!audible) return 0;
+    this.analyser.getFloatTimeDomainData(this.samples);
+    let sum = 0;
+    for (const value of this.samples) sum += value * value;
+    return Math.sqrt(sum / this.samples.length);
+  }
+
+  private disconnectAnalyser(): void {
+    if (this.disconnected) return;
+    this.disconnected = true;
+    this.samples.fill(0);
+    this.analyser.disconnect();
+  }
 
   enqueue(bytes: Uint8Array): boolean {
     if (this.stopped || this.finished) throw new DOMException('Playback stopped', 'AbortError');
@@ -158,15 +189,17 @@ export class StreamingPcmPlayer {
     audio.getChannelData(0).set(samples);
     const source = this.context.createBufferSource();
     source.buffer = audio;
-    source.connect(this.context.destination);
+    source.connect(this.analyser);
     source.onended = () => {
       this.sources.delete(source);
+      this.scheduled.delete(source);
       source.disconnect();
-      if (this.finished && !this.sources.size) this.resolveFinished?.();
+      if (this.finished && !this.sources.size) { this.disconnectAnalyser(); this.resolveFinished?.(); }
     };
     this.sources.add(source);
     const when = Math.max(this.context.currentTime + .04, this.nextStart);
     this.nextStart = when + audio.duration;
+    this.scheduled.set(source, { start: when, end: this.nextStart });
     source.start(when);
     return true;
   }
@@ -175,7 +208,7 @@ export class StreamingPcmPlayer {
     if (this.stopped) return Promise.reject(new DOMException('Playback stopped', 'AbortError'));
     this.decoder.finish();
     this.finished = true;
-    if (!this.sources.size) return Promise.resolve();
+    if (!this.sources.size) { this.disconnectAnalyser(); return Promise.resolve(); }
     return new Promise((resolve, reject) => { this.resolveFinished = resolve; this.rejectFinished = reject; });
   }
 
@@ -188,6 +221,8 @@ export class StreamingPcmPlayer {
       source.disconnect();
     }
     this.sources.clear();
+    this.scheduled.clear();
+    this.disconnectAnalyser();
     this.rejectFinished?.(new DOMException('Playback stopped', 'AbortError'));
   }
 }

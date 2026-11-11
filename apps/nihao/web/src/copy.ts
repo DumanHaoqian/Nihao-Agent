@@ -3,6 +3,9 @@ export type Locale = 'en' | 'zh';
 
 const english = {
   brand: 'Nihao Agent',
+  avatarLabel: 'Nihao travel companion',
+  replyTable: 'Scrollable table',
+  avatarVoiceIssue: 'Please check the voice input message below',
   tagline: 'A little local knowledge goes a long way',
   description: 'From your first nihao to your next adventure — ask about life, food, and travel in China',
   heading: 'China, a little closer',
@@ -122,6 +125,9 @@ export const copy: Record<Locale, typeof english> = {
   en: english,
   zh: {
     brand: 'Nihao Agent',
+    avatarLabel: 'Nihao 旅行伙伴',
+    replyTable: '可横向滚动的表格',
+    avatarVoiceIssue: '请查看下方的语音输入提示',
     tagline: '多懂一点当地，旅途就近一点',
     description: '从第一声「你好」到下一段旅程，聊聊中国的生活、美食与旅行',
     heading: '和中国，再近一点',

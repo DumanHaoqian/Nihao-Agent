@@ -9,9 +9,9 @@ async function main(): Promise<void> {
     app.server.listen(config.port, config.host, () => { app.server.off('error', reject); resolve() })
   })
   console.log(`Nihao Agent is ready at http://${config.host}:${config.port}`)
-  if (!config.configured) console.log('Poe is not connected. Run poe in your terminal before starting Nihao.')
-  if (!config.speechConfigured) console.log('Read aloud is not connected. Run doubao in your terminal before starting Nihao.')
-  if (!config.mapsConfigured) console.log('Maps are not connected. Run baidumap in your terminal before starting Nihao.')
+  if (!config.configured) console.log('Poe is not configured. Set POE_API_KEY in .env or your environment, then restart.')
+  if (!config.speechConfigured) console.log('Speech is not configured. Set DOUBAO_API_KEY in .env or your environment, then restart.')
+  if (!config.mapsConfigured) console.log('Maps are not configured. Set BAIDU_MAP_API_KEY in .env or your environment, then restart.')
   let closing = false
   const close = (): void => {
     if (closing) return

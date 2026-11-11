@@ -8,6 +8,8 @@ export default defineConfig({
   build: {
     outDir: '../../../dist/client',
     emptyOutDir: true,
+    // Keep even small math fonts self-hosted under the app's font-src policy.
+    assetsInlineLimit: 0,
   },
   server: {
     host: '127.0.0.1',

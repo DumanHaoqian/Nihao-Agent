@@ -119,6 +119,8 @@ try {
   await input.fill('Please help:');
   await start();
   await hasTranscript();
+  await page.waitForFunction(() => document.querySelector('.welcome-avatar .nihao-avatar')?.dataset.activity === 'listening');
+  assert.equal(await page.locator('.welcome-avatar canvas').getAttribute('data-mouth'), 'closed');
   assert.equal(await input.evaluate(element => element.readOnly), true);
   assert.equal(await page.getByRole('button', { name: 'Send message', exact: true }).count(), 0);
   assert.match(await input.inputValue(), /^Please help:/);
@@ -148,6 +150,8 @@ try {
   await page.getByRole('button', { name: 'Stop reading', exact: true }).waitFor();
   await start();
   await hasTranscript();
+  await page.locator('.avatar-listening [data-activity="listening"]').waitFor();
+  assert.equal(await page.locator('.message--assistant canvas').count(), 0, 'dictation owns the input companion, not historical replies');
   assert.equal(await page.getByRole('button', { name: 'Stop reading', exact: true }).count(), 0);
   assert.equal(speechRequests[0].closed, true, 'starting the microphone cancels synthesis');
   await page.getByRole('button', { name: 'Read aloud', exact: true }).click();
@@ -167,6 +171,7 @@ try {
   // A cancelled permission request can resolve later; every late track is stopped.
   await page.evaluate(() => { window.__microphoneMode = 'delayed'; });
   await start();
+  assert.equal(await page.locator('.welcome-avatar .nihao-avatar').getAttribute('data-activity'), 'waiting');
   await cancel();
   await page.waitForTimeout(500);
   await released();
@@ -174,11 +179,13 @@ try {
   await start();
   await page.locator('.dictation-error').waitFor();
   assert.match(await page.locator('.dictation-error').innerText(), /microphone|permission/i);
+  assert.equal(await page.locator('.welcome-avatar .nihao-avatar').getAttribute('data-expression'), 'concerned');
   await page.evaluate(() => { window.__microphoneMode = 'normal'; });
 
   mode = 'connecting';
   await start();
   await page.locator('.dictation-status').filter({ hasText: 'Connecting' }).waitFor();
+  assert.equal(await page.locator('.welcome-avatar .nihao-avatar').getAttribute('data-activity'), 'waiting');
   await cancel();
   await released();
 
@@ -201,6 +208,7 @@ try {
   await hasTranscript();
   await finish();
   await page.locator('.dictation-status').filter({ hasText: 'Finishing' }).waitFor();
+  assert.equal(await page.locator('.welcome-avatar .nihao-avatar').getAttribute('data-activity'), 'waiting');
   await released();
   await cancel();
 
@@ -212,6 +220,13 @@ try {
   await hasTranscript();
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await page.screenshot({ path: '/tmp/nihao-dictation-mobile.png' });
+  await page.screenshot({ path: '/tmp/nihao-avatar-dictation-390.png' });
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.waitForTimeout(150);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+  await page.getByRole('button', { name: '取消语音输入', exact: true }).click({ trial: true });
+  await page.getByRole('button', { name: '完成语音输入', exact: true }).click({ trial: true });
+  await page.screenshot({ path: '/tmp/nihao-avatar-dictation-320.png' });
   await page.keyboard.press('Escape');
   await released();
   await page.getByRole('button', { name: '开始语音输入', exact: true }).waitFor();

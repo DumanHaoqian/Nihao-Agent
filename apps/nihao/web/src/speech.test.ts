@@ -81,9 +81,12 @@ test('aborting speech cancels a reader waiting for the next audio packet', async
 });
 
 function mockAudioContext() {
+  const analyser = { fftSize: 0, smoothingTimeConstant: 0, disconnected: false, level: .1, connect() {}, disconnect() { this.disconnected = true; }, getFloatTimeDomainData(array: Float32Array) { array.fill(this.level); } };
   const sources: { buffer: { duration: number } | null; onended: (() => void) | null; when: number; stopped: boolean; disconnected: boolean; connect(): void; disconnect(): void; start(when: number): void; stop(): void }[] = [];
   const context = {
     currentTime: 10,
+    state: 'running',
+    createAnalyser: () => analyser,
     destination: {},
     createBuffer(_channels: number, frames: number, rate: number) {
       const data = new Float32Array(frames);
@@ -97,8 +100,40 @@ function mockAudioContext() {
       return source;
     },
   };
-  return { context, sources };
+  return { context, sources, analyser };
 }
+
+test('one shared analyser reads output only during actual scheduled sound, including silence and replay', async () => {
+  const { context, sources, analyser } = mockAudioContext();
+  const player = new StreamingPcmPlayer(context as unknown as AudioContext);
+  player.enqueue(new Uint8Array(4800));
+  assert.equal(player.readLevel(), 0, 'enqueued does not mean audible');
+  context.currentTime = 10.08;
+  assert.ok(Math.abs(player.readLevel() - .1) < .00001);
+  analyser.level = 0;
+  assert.equal(player.readLevel(), 0, 'silent PCM closes mouth even while playing');
+  analyser.level = .3;
+  context.currentTime = 10.2;
+  assert.equal(player.readLevel(), 0, 'network gap must not read stale analyser data');
+  sources[0]!.onended?.();
+  player.enqueue(new Uint8Array(4800));
+  assert.equal(player.readLevel(), 0, 'new scheduled block still waits for its start');
+  context.currentTime = 10.28;
+  assert.ok(player.readLevel() > .29);
+  const done = player.finish();
+  sources[1]!.onended?.();
+  await done;
+  assert.equal(player.readLevel(), 0);
+  assert.equal(analyser.disconnected, true);
+  const replay = mockAudioContext();
+  const replayPlayer = new StreamingPcmPlayer(replay.context as unknown as AudioContext);
+  replayPlayer.enqueue(new Uint8Array(4800));
+  replay.context.currentTime = 10.08;
+  assert.ok(replayPlayer.readLevel() > 0);
+  replayPlayer.stop();
+  assert.equal(replayPlayer.readLevel(), 0);
+  assert.equal(replay.analyser.disconnected, true);
+});
 
 test('audio completion waits for scheduled sound, and cancellation stops every outstanding source', async () => {
   const { context, sources } = mockAudioContext();

@@ -10,7 +10,8 @@ Paths below are relative to the `Nihao-Agent/` project root.
 - `apps/nihao/web/public/brand/nihao-logo.png`: transparent horizontal logo, 832 × 186, displayed at 208px on desktop and up to 176px on mobile.
 - `apps/nihao/web/public/brand/nihao-mark.png`: transparent blue N, 256 × 256, reusable brand asset.
 - `apps/nihao/web/public/brand/nihao-icon.png`: 64 × 64 browser favicon.
-- `apps/nihao/web/public/brand/chat-head.png`: original character image, displayed in a 48 × 48 box with its full silhouette and transparency preserved.
+- `apps/nihao/web/public/brand/chat-head.png`: original character image, preserved as the fallback when animation resources fail.
+- `apps/nihao/web/public/avatar/nihao-v1/`: registered portrait/bust crops and small animation atlases from the existing pixel-art asset pack. The 48px chat slot uses a dedicated portrait; the welcome character uses the bust. See [character runtime](avatar-runtime.md).
 
 The built-in imagegen tool extracted the two logo assets. Sharp cropped the transparent padding and exported web sizes. Original source files were preserved under `assets/`; the browser continues to use the copies under `apps/nihao/web/public/brand/`. The avatar is the user's original PNG, not generated.
 

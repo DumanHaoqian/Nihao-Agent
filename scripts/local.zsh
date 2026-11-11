@@ -16,15 +16,10 @@ for nihao_loader nihao_variable in poe POE_API_KEY doubao DOUBAO_API_KEY baiduma
 done
 cd "${0:A:h:h}" || exit 1
 case "$nihao_mode" in
-  start) exec node --use-env-proxy dist/server.mjs ;;
-  dev) exec node scripts/dev.mjs ;;
+  start) exec node --env-file-if-exists=.env --use-env-proxy dist/server.mjs ;;
+  dev) exec node --env-file-if-exists=.env scripts/dev.mjs ;;
   check)
-    exec node --input-type=module -e '
-      for (const name of ["POE_API_KEY", "DOUBAO_API_KEY", "BAIDU_MAP_API_KEY"]) {
-        console.log(`${name}: ${process.env[name]?.trim() ? "loaded (value hidden)" : "not loaded"}`);
-      }
-      console.log("This checks environment loading, not provider authorization.");
-    '
+    exec node --env-file-if-exists=.env scripts/check-env.mjs
     ;;
   *) print -u2 -- 'Usage: zsh scripts/local.zsh [start|dev|check]'; exit 1 ;;
 esac
